@@ -1,0 +1,8 @@
+package com.inadco.acceptance.lcx.suites
+
+import com.inadco.acceptance.lcx.common.*
+import com.inadco.acceptance.lcx.extensions.*
+import com.inadco.acceptance.lcx.sitemodel.*
+
+#Self Progression
+

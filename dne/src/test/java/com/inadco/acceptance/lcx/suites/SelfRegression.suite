@@ -1,0 +1,24 @@
+package com.inadco.acceptance.lcx.suites
+
+import com.inadco.acceptance.lcx.common.*
+import com.inadco.acceptance.lcx.extensions.*
+import com.inadco.acceptance.lcx.common.helpers.*
+import com.inadco.acceptance.lcx.common.settings.*
+import com.inadco.acceptance.lcx.common.settings.impl.*
+
+# Self Regression Suite
+
+This is internal regression testing for the acceptance testing framework
+ 
+ ## common
+-"FileHelper"
+-"Settings"
+-"SettingsImpl"
+-"WebdriverProvider"
+
+## extensions
+-"Background"
+
+## pageobjects
+
+## testdata

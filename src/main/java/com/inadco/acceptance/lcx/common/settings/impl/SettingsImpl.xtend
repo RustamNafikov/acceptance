@@ -5,8 +5,8 @@ import com.typesafe.config.ConfigFactory
 import com.typesafe.config.Config
 import java.io.File
 
-import static extension com.inadco.acceptance.lcx.common.helpers.FileHelper.*
 import com.inadco.acceptance.lcx.common.settings.Settings
+import static extension com.inadco.acceptance.lcx.common.helpers.FileHelper.*
 
 /**
 * Provides application-environment specific settings as defined in application.conf
@@ -53,10 +53,14 @@ class SettingsImpl implements Settings {
 	}
 
 	private def asFile(String reference) {
-		internalConfig.getString(reference).resourceAsFile
+		reference.property.resourceAsFile
 	}
 
 	private def asString(String reference) {
+		reference.property
+	}
+
+	private def getProperty(String reference) {
 		internalConfig.getString(reference)
 	}
 

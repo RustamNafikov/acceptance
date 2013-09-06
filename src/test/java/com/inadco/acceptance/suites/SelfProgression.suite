@@ -1,0 +1,9 @@
+package com.inadco.acceptance.suites
+
+import com.inadco.acceptance.common.*
+import com.inadco.acceptance.extensions.*
+import com.inadco.acceptance.sitemodel.*
+import com.inadco.acceptance.common.providers.*
+
+#Self Progression
+-"SiteModelProvider"

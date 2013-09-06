@@ -1,0 +1,35 @@
+package com.inadco.acceptance.suites
+
+import com.inadco.acceptance.common.*
+import com.inadco.acceptance.extensions.*
+import com.inadco.acceptance.common.helpers.*
+import com.inadco.acceptance.common.settings.*
+import com.inadco.acceptance.common.settings.impl.*
+import com.inadco.acceptance.common.providers.*
+import com.inadco.acceptance.sitemodel.*
+
+# Self Regression Suite
+
+This is internal regression testing for the acceptance testing framework
+
+ ## common
+
+ ### common/helpers
+  -"FileHelper"
+  
+### common/providers
+-"WebdriverProvider"
+-"SiteModelProvider"
+  
+### common/settings
+-"Settings"
+
+## extensions
+-"Background"
+
+## sitemodel
+-"Element"
+-"Page"
+-"SiteModel"
+
+//## testdata

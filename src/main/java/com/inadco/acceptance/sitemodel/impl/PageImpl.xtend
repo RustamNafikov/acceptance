@@ -4,6 +4,7 @@ import java.util.List
 import org.openqa.selenium.By
 import com.inadco.acceptance.sitemodel.Page
 import com.inadco.acceptance.sitemodel.Element
+import com.inadco.acceptance.sitemodel.descriptors.ElementType
 
 @Data
 class PageImpl implements Page {
@@ -15,7 +16,7 @@ class PageImpl implements Page {
 
 	new(List<Element> elements) {
 		_elements = elements
-		val me = _elements.filter[it.type.name.equalsIgnoreCase("page")].head
+		val me = _elements.filter[it.type.equals(ElementType.PAGE)].head
 		_elements.remove(me)
 		_name = me.name
 		_url = me.url

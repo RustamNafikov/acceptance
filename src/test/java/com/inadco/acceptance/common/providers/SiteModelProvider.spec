@@ -6,20 +6,20 @@ import com.inadco.acceptance.sitemodel.Page
 
 describe SiteModelProvider {
 extension SiteModel = SiteModelProvider.siteModel
-	def getValues{
-		| getter                     | expected     |
+	def verifyValues{
+		| actual                     | expected     |
 		| getPage("does not exist")  | null         |
 		| getPage("Login Page").name | "Login Page" |
 	}
 	
-	def getObjects{
-		| getter                      | expected  |
+	def verifyTypes{
+		| actual                      | expected  |
 		| SiteModelProvider.siteModel | SiteModel |
 		| getPage("Login Page")       | Page      |
 	}
 	
-	fact getValues.forEach[getter should be expected]
-	fact getObjects.forEach[ expected.isInstance(getter) should be true]
+	fact verifyValues.forEach[actual should be expected]
+	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 	
 	
 

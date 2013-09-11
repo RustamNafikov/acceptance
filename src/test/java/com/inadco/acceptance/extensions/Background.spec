@@ -4,18 +4,14 @@ import com.inadco.acceptance.extensions.Background
 
 describe Background {
 	extension Background = new AperBackground
-		def getValues{
-		| getter  | expected |
-		| at("")  | true     |
-		| see("") | true     |
+	def verifyValues{
+		| actual  | expected |
+		| "".at   | true     |
+		| "".see  | true     |
 	}
 	
 
-	fact getValues.forEach[getter should be expected]
-	fact "expected void methods exist"{
-		clicking("")
-		typing("", "")
-		closeDriver()
-	}
-
+	fact verifyValues.forEach[actual should be expected]
+	//mrobertson - void methods would only be tested to see if they exist, 
+	//but that is enforced by the compiler, so no need 
 }

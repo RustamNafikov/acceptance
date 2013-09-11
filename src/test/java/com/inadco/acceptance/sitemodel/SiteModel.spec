@@ -4,11 +4,11 @@ import com.inadco.acceptance.sitemodel.SiteModel
 
 describe SiteModel {
 	extension SiteModel = new AperSiteModel
-	def getObjects{
-		| getter      | expected |
-		| getPage("") | Page     |
+	def verifyTypes{
+		| actual  | expected |
+		| "".page | Page     |
 	}
 		
-	fact getObjects.forEach[ expected.isInstance(getter) should be true]
+	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 	
 }

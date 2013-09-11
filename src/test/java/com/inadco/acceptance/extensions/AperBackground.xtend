@@ -19,7 +19,13 @@ class AperBackground implements Background {
 	override typing(String elementName, String text) {
 	}
 
+	override typing(String elementName) {
+	}
+
 	override closeDriver() {
+	}
+
+	override pauseFor(int timeInSeconds) {
 	}
 
 }

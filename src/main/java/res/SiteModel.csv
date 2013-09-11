@@ -1,4 +1,4 @@
-Name	Page	Type	Within	Clicking	Typing	URL	Firefox Identifier	Firefox By	HtmlUnit Identifier	HtmlUnit By
+Name	Page Name	Type	Within	Clicking	Typing	URL	Firefox Identifier	Firefox By	HtmlUnit Identifier	HtmlUnit By
 Login Page	Login Page	Page				/app/#/login	signinForm	name	unknown	unknown
 Create New Account Page	Create New Account Page	Page				/app/#signup	signupForm	name	unknown	unknown
 Create an account	Login Page	Link		to: /app/#signup			Create an account	linkText	unknown	unknown

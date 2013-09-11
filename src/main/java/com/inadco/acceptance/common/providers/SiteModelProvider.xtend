@@ -15,7 +15,6 @@ class SiteModelProvider {
 
 		throw new UnsupportedOperationException(
 			"TODO: this has not been implemented")
-
 	}
 
 	/**

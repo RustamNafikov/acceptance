@@ -22,7 +22,7 @@ class SettingsBasedSiteModel implements SiteModel {
 		val headerRow = lines.head.replaceAll(" ", "").toLowerCase.split('\t').
 			toList
 
-		var unfilteredElements = lines.map [ row |
+		val unfilteredElements = lines.map [ row |
 			//skip header row and comments, capture all others
 			if(row.equals(lines.head) || row.startsWith('//') ||
 				row.startsWith('#')) {
@@ -34,22 +34,22 @@ class SettingsBasedSiteModel implements SiteModel {
 				val map = new HashMap<String, String>
 				headerRow.forEach[
 					map.put(it, cell.get(headerRow.indexOf(it)))]
-				LOG.info("the map: {}", map)
+				LOG.trace("the map: {}", map)
 
 				//create an Element using the map
-				return new ElementImpl(map) as Element
+				return new ElementImpl(this, map) as Element
 			}
 		]
 
 		val elements = unfilteredElements.filterNull.toList
 
 		//get a set of pages from out of the filtered elements list
-		val containingPages = elements.map[it.page].toSet
+		val containingPages = elements.map[it.pageName].toSet
 
 		//Make a list of Pages and place the elements that belong to each page into it
 		pages = containingPages.map [ page |
 			return new PageImpl(
-				elements.filter[it.page.equals(page)].toList) as Page
+				elements.filter[it.pageName.equals(page)].toList) as Page
 		].toList
 	}
 

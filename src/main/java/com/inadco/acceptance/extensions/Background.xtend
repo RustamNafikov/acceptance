@@ -35,6 +35,19 @@ interface Background {
 	def void typing(String elementName, String text)
 
 	/**
+	* Attempts to type a value (generated or looked up) into an element 
+	* that may exist on the page the webdriver is currently at
+	* @param elementName the element name to check (as defined in the Site Model)
+	* @param text the text to type into the element
+	*/
+	def void typing(String elementName)
+
+	/**
+	* Causes the test to wait for a period of time
+	*/
+	def void pauseFor(int timeInSeconds)
+
+	/**
 	* Closes the webdriver instance
 	* @After - forces this for every test run (Scenario within a Feature)
 	*/

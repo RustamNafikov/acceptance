@@ -1,4 +1,4 @@
-package com.inadco.lcx.suites
+package com.inadco.lcx.allsuites
 
 import com.inadco.lcx.features.*
 

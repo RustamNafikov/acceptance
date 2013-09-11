@@ -4,17 +4,18 @@ import java.io.File
 
 describe Settings {
 	extension Settings = new AperSettings
-	def getValues{
-		| getter    | expected                          |
-		| lcxUrl    | "http://www.sitedoesnotexist.com" |
-		| webdriver | "FirefoxDriver"                   |
+	def verifyValues{
+		| actual           | expected                          |
+		| lcxUrl           | "http://www.sitedoesnotexist.com" |
+		| webdriver        | "FirefoxDriver"                   |
+		| testDataStore    | "-DOES_NOT_EXIST-"                |
+		| useTestDataStore | false                             |
 	}
 	
-	def getObjects{
-		| getter    | expected |
+	def verifyTypes{
+		| actual    | expected |
 		| siteModel | File     |
 	}
-	fact getValues.forEach[getter should be expected]
-	fact getObjects.forEach[ expected.isInstance(getter) should be true]
-	
+	fact verifyValues.forEach[actual should be expected]
+	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 }

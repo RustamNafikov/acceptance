@@ -5,18 +5,18 @@ import org.openqa.selenium.By
 
 describe "Page" {
 	extension Page = new AperPage
-	def getValues{
-		| getter            | expected        |
+	def verifyValues{
+		| actual          | expected        |
 		| name            | "AperPage-name" |
 		| url             | "/aper-url"     |
-		| firefoxLocator  | By.name(name) |
-		| htmlUnitLocator | By.name(name) |
+		| firefoxLocator  | By.name(name)   |
+		| htmlUnitLocator | By.name(name)   |
 	}
 	
-	def getObjects{
-		| getter           | expected |
+	def verifyTypes{
+		| actual         | expected |
 		| getElement("") | Element  |
 	}
-	fact getValues.forEach[getter should be expected]
-	fact getObjects.forEach[ expected.isInstance(getter) should be true]
+	fact verifyValues.forEach[actual should be expected]
+	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 }

@@ -1,6 +1,7 @@
 package com.inadco.acceptance.sitemodel
 
 import org.openqa.selenium.By
+import com.inadco.acceptance.sitemodel.descriptors.ElementType
 
 /**
  * Represents an element within the Site Model
@@ -12,31 +13,37 @@ interface Element {
 	def String getName()
 
 	/**
-	 * @return the page the this element resides within
+	 * @return the page this element resides within
 	 */
-	def String getPage()
+	def Page getPage()
+
+	/**
+	 * @return the name of the page this element resides within
+	 */
+	def String getPageName()
 
 	/**
 	 * @return the type of element this is (such as Button, Link, Page)
 	 */
-	//mrobertson - This probably needs to be an enum
-	def String getType()
+	def ElementType getType()
 
 	/**
 	 * @return the name of another element that this element is directly nested within (such as a pop-over, or collapsible)
 	 */
+	//mrobertson - This should return the Element that this Element is nested within from the SiteModel
+	//waiting for this to be relevant to implement
 	def String getWithin()
 
 	/**
 	 * @return information that is relevant for when this element is clicked (such as the URL it goes to)
 	 */
-	//mrobertson - This may need to be an enum
+	//mrobertson - This needs to be a ClickingAction
 	def String getClicking()
 
 	/**
 	 * @return information that is relevant for when this element is typed into (such as the validation rule)
 	 */
-	//mrobertson - This probably needs to be an enum
+	//mrobertson - This needs to be a TypingAction
 	def String getTyping()
 
 	//mrobertson - Will need 'getIsRequired' for fieldTypes

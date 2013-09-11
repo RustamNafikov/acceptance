@@ -20,6 +20,8 @@ class SettingsImpl implements Settings {
 	var String lcxUrl
 	var String webdriver
 	var File siteModel
+	var String testDataStore
+	var boolean useTestDataStore
 
 	private new() {
 		val rootConfig = ConfigFactory.load
@@ -31,6 +33,8 @@ class SettingsImpl implements Settings {
 		webdriver = "webdriver".asString
 
 		siteModel = "siteModel".asFile
+		testDataStore = "testDataStore".asString
+		useTestDataStore = "useTestDataStore".asBoolean
 	}
 
 	/**
@@ -52,12 +56,24 @@ class SettingsImpl implements Settings {
 		siteModel
 	}
 
+	override getTestDataStore() {
+		testDataStore
+	}
+
+	override getUseTestDataStore() {
+		useTestDataStore
+	}
+
 	private def asFile(String reference) {
 		reference.property.resourceAsFile
 	}
 
 	private def asString(String reference) {
 		reference.property
+	}
+
+	private def asBoolean(String reference) {
+		Boolean.valueOf(reference.property)
 	}
 
 	private def getProperty(String reference) {

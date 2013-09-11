@@ -15,7 +15,7 @@ class PageImpl implements Page {
 
 	new(List<Element> elements) {
 		_elements = elements
-		val me = _elements.filter[it.type.equalsIgnoreCase("page")].head
+		val me = _elements.filter[it.type.name.equalsIgnoreCase("page")].head
 		_elements.remove(me)
 		_name = me.name
 		_url = me.url

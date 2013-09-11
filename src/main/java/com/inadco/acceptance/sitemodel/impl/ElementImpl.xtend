@@ -4,14 +4,17 @@ import java.util.Map
 import org.slf4j.LoggerFactory
 import org.openqa.selenium.By
 import com.inadco.acceptance.sitemodel.Element
+import static com.inadco.acceptance.sitemodel.descriptors.ElementType.*
+import com.inadco.acceptance.sitemodel.SiteModel
 
 /**
  * a basic implementation of the Element interface
  */
 class ElementImpl implements Element {
 	static val LOG = LoggerFactory.getLogger(ElementImpl)
+	var SiteModel siteModel
 	var String name
-	var String page
+	var String pageName
 	var String type
 	var String within
 	var String clicking
@@ -24,14 +27,17 @@ class ElementImpl implements Element {
 
 	/**
 	 * Constructs an Element given an unordered map of properties
-	 * ignores any unrecognized elements within the map,
+	 * ignores any unrecognized elements within the map
+	 * @param the SiteModel that this element belongs to
 	 * @param properties map of properties to associate with this element
 	 * @throws IllegalArgument exception in case of expected property missing
 	 */
-	new(Map<String, String> properties) throws IllegalArgumentException{
+	new(SiteModel siteModel, Map<String, String> properties) throws IllegalArgumentException{
+
+		this.siteModel = siteModel
 
 		//List of mapped fields in ElementImpl
-		var stringFields = ElementImpl.declaredFields.filter[
+		val stringFields = ElementImpl.declaredFields.filter[
 			it.type.equals(String)]
 
 		//for each field, fetch the field from the map, and assign that to the field
@@ -61,12 +67,21 @@ class ElementImpl implements Element {
 		name
 	}
 
+	override getPageName() {
+		pageName
+	}
+
 	override getPage() {
-		page
+		siteModel.getPage(pageName)
 	}
 
 	override getType() {
-		type
+		switch (type) {
+			case PAGE.name: PAGE
+			case LINK.name: LINK
+			case TEXT_FIELD.name: TEXT_FIELD
+			case BUTTON.name: BUTTON
+		}
 	}
 
 	override getWithin() {
@@ -92,5 +107,6 @@ class ElementImpl implements Element {
 	override getHtmlUnitLocator() {
 		toBy(htmlUnitIdentifier, htmlUnitBy)
 	}
+
 
 }

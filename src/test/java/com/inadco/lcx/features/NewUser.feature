@@ -26,11 +26,13 @@ Scenario: Create User Account
 		"Create an account".clicking
 		args.first.at
 	When I fill in the required information
-		val fakePass = "12345678"
-		"First Name".typing("myFirstName")
-		"Last Name".typing("myLastName")
-		"User Name".typing("noone3@gmail.com")
-		"Password".typing(fakePass)
-		"Password Confirmation".typing(fakePass)
+		"First Name".typing
+		"Last Name".typing
+		"User Name".typing
+		"Password".typing
+		"Password Confirmation".typing
 	And I Click Submit
 		"Submit".clicking
+	And I wait
+		pauseFor(100)
+	Then I should be at the "DNE page"

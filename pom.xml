@@ -18,7 +18,7 @@
 	<dependencies>
 		<!-- jnario: external -->
 		<dependency>
-		
+
 			<groupId>org.jnario</groupId>
 			<artifactId>org.jnario.lib.maven</artifactId>
 			<version>${jnario.version}</version>
@@ -66,12 +66,18 @@
 			<version>1.0.13</version>
 		</dependency>
 
-		<!-- IO (apache commons-io: external -->
+		<!-- IO (apache commons-io): external -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
+		</dependency>
 
+		<!-- General Utils (apache commons-lang): external -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
 		</dependency>
 
 	</dependencies>

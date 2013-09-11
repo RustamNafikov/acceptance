@@ -8,7 +8,7 @@ describe "Element" {
 	
 	def verifyValues{
 		| actual          | expected           |
-		| name            | "AperElement-namex" |
+		| name            | "AperElement-name" |
 		| pageName        | "aper-page"        |
 		| page            | new AperPage       |
 		| type            | ElementType.PAGE   |

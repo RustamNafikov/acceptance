@@ -5,6 +5,8 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.slf4j.LoggerFactory
 import com.inadco.acceptance.common.settings.impl.SettingsImpl
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.firefox.FirefoxProfile
+import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 
 /**
  * Merely provides a WebDriver
@@ -22,8 +24,13 @@ class WebdriverProvider {
 		LOG.debug("specified driver: {}", driverName)
 
 		switch (driverName) {
-			case "FirefoxDriver":
-				return new FirefoxDriver
+			case "FirefoxDriver": {
+				val profile = new FirefoxProfile()
+				profile.addExtension(
+					"/res/webdriver/firefox/extensions/firebug-1.12.0.xpi".
+						resourceAsFile)
+				return new FirefoxDriver(profile)
+			}
 			case "HtmlUnitDriver":
 				return new HtmlUnitDriver
 			default:

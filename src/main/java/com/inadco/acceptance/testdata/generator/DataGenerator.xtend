@@ -10,4 +10,6 @@ interface DataGenerator {
 	 */
 	def String getValue(String dataItemName)
 
+	def String getUnique()
+
 }

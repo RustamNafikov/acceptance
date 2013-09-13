@@ -8,6 +8,7 @@ class AperSettings implements Settings {
 	val lcxUrl = "http://www.sitedoesnotexist.com"
 	val webdriver = "FirefoxDriver"
 	val siteModel = "/res/SiteModel.csv".resourceAsFile
+	val dataItems = "/res/DataItems.csv".resourceAsFile
 	val testDataStore = "-DOES_NOT_EXIST-"
 	val useTestDataStore = false
 }

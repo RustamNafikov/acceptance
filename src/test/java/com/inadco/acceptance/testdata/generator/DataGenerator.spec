@@ -4,10 +4,11 @@ describe "DataGenerator"{
 extension DataGenerator = new AperDataGenerator
 
 	def verifyValues{
-		| actual     | expected                  |
-		| "Name"     | "NameUtests"              |
-		| "Email"    | "Email-Utests@inadco.com" |
-		| "Password" | "12345678"                |
+		| actual     | expected        |
+		| "Name"     | "aper-Name"     |
+		| "Email"    | "aper-Email"    |
+		| "Password" | "aper-Password" |
+		| unique     | "aper-UNIQUE"   |
 	}
 	
 	fact verifyValues.forEach[actual.value.equals(expected) should be true]

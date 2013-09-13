@@ -22,6 +22,11 @@ interface Settings {
 	def File getSiteModel()
 
 	/**
+	 * @return the Data Items Definiton File
+	 */
+	def File getDataItems()
+
+	/**
 	 * @return the Test Data Store File
 	 */
 	// mrobertson - returns a string until this is needed 

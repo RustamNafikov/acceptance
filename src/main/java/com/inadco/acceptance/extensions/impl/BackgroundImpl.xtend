@@ -24,11 +24,15 @@ class BackgroundImpl implements Background { //
 	val wd = WebdriverProvider.webdriver
 	val sm = SiteModelProvider.siteModel
 	val dp = TestDataProvider.testData
+	val String referringFeature
+	val String lastModified
 
 	val initialPage = sm.getPage("Login Page")
 	var currentPage = initialPage
 
 	new(Class<?> referringFeature, String lastModified) {
+		this.referringFeature = referringFeature.simpleName
+		this.lastModified = lastModified
 		wd.get(settings.lcxUrl + initialPage.url)
 	}
 
@@ -68,14 +72,14 @@ class BackgroundImpl implements Background { //
 	}
 
 	override pauseFor(int timeInSeconds) {
+		LOG.info("pausing for {} seconds - start", timeInSeconds)
 		try {
-			LOG.info("waiting start")
 			new WebDriverWait(wd, timeInSeconds).until(
 				ExpectedConditions.alertIsPresent())
 		} catch(Exception e) {
 
 			//exception is expected, thats how this works
-			LOG.info("waiting done")
+			LOG.info("pausing for {} seconds - done", timeInSeconds)
 		}
 	}
 
@@ -106,7 +110,8 @@ class BackgroundImpl implements Background { //
 
 	//gets the type of value to fetch from the testDataProvider
 	private def getTypingValue(String elementName) {
-		dp.getValue(currentPage.getElement(elementName).typing)
+		var currentElement = currentPage.getElement(elementName)
+		dp.getValue(currentElement.typing)
 	}
 
 }

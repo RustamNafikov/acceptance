@@ -2,10 +2,18 @@ Name	Page Name	Type	Within	Clicking	Typing	URL	Firefox Identifier	Firefox By	Htm
 Login Page	Login Page	Page				/app/#/login	signinForm	name	unknown	unknown
 Create New Account Page	Create New Account Page	Page				/app/#signup	signupForm	name	unknown	unknown
 Create an account	Login Page	Link		to: /app/#signup			Create an account	linkText	unknown	unknown
-First Name	Create New Account Page	TextField			name		firstName	name	unknown	unknown
-Last Name	Create New Account Page	TextField			name		lastName	name	unknown	unknown
+First Name	Create New Account Page	TextField			personal name		firstName	name	unknown	unknown
+Last Name	Create New Account Page	TextField			personal name		lastName	name	unknown	unknown
 User Name	Create New Account Page	TextField			email		userName	name	unknown	unknown
 Password	Create New Account Page	TextField			password		pwd	name	unknown	unknown
 Password Confirmation	Create New Account Page	TextField			password		confirmPwd	name	unknown	unknown
 Submit	Create New Account Page	Button					.btn-primary	cssSelector	unknown	unknown
-//This is a comment row	so	none					of 	these	values	matter
+Business Details Page	Business Details Page	Page				/app/#/advertisers/create	advAccountForm	name	unknown	unknown
+Company Name	Business Details Page	TextField			company name		companyName	name	unknown	unknown
+Address	Business Details Page	TextField			street address		streetAddr	name	unknown	unknown
+City	Business Details Page	TextField			city		city	name	unknown	unknown
+State	Business Details Page	TextField			state		state	name	unknown	unknown
+Zip	Business Details Page	TextField			zip		zip	name	unknown	unknown
+Phone	Business Details Page	TextField			phone		primaryPhone	name	unknown	unknown
+Terms	Business Details Page	Button					tos	name	unknown	unknown
+Submit	Business Details Page	Button					.btn-purple	cssSelector	unknown	unknown

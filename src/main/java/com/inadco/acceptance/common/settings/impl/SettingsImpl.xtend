@@ -20,6 +20,7 @@ class SettingsImpl implements Settings {
 	var String lcxUrl
 	var String webdriver
 	var File siteModel
+	var File dataItems
 	var String testDataStore
 	var boolean useTestDataStore
 
@@ -33,6 +34,7 @@ class SettingsImpl implements Settings {
 		webdriver = "webdriver".asString
 
 		siteModel = "siteModel".asFile
+		dataItems = "dataItems".asFile
 		testDataStore = "testDataStore".asString
 		useTestDataStore = "useTestDataStore".asBoolean
 	}
@@ -54,6 +56,10 @@ class SettingsImpl implements Settings {
 
 	override getSiteModel() {
 		siteModel
+	}
+
+	override getDataItems() {
+		dataItems
 	}
 
 	override getTestDataStore() {

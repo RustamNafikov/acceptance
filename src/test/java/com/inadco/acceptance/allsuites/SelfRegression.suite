@@ -8,6 +8,7 @@ import com.inadco.acceptance.common.settings.impl.*
 import com.inadco.acceptance.common.providers.*
 import com.inadco.acceptance.sitemodel.*
 import com.inadco.acceptance.testdata.generator.*
+import com.inadco.acceptance.testdata.*
 
 # Self Regression Specs
 
@@ -32,5 +33,8 @@ This is internal regression testing for the acceptance testing framework
 -"Page"
 -"SiteModel"
 
-## testdata/generator
+## testdata
+-"DataItem"
+
+### testdata/generator
 -"DataGenerator"

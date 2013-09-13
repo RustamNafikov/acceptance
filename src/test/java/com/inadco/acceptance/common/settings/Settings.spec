@@ -15,6 +15,7 @@ describe Settings {
 	def verifyTypes{
 		| actual    | expected |
 		| siteModel | File     |
+		| dataItems | File     |
 	}
 	fact verifyValues.forEach[actual should be expected]
 	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]

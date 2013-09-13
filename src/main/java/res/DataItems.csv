@@ -1,0 +1,10 @@
+Name	Validation Rule	Prototype Value
+personal name	[\w]{1,}	personalName${unique}
+company name	[\w]{1,}	companyName${unique}
+email	.*	email-${unique}@inadco.com
+password	.*	12345678
+street address	.*	12 ${unique} st
+city	.*	city${unique}
+state	.*	CA
+zip	.*	95050
+phone	.*	4085526882

@@ -1,6 +1,7 @@
 package com.inadco.acceptance.sitemodel.descriptors
 
 @Data
+//mrobertson - this is a candidate for replacing with a more abstract file-sourced solution
 class ElementType {
 	public static val PAGE = new ElementType("Page")
 	public static val LINK = new ElementType("Link")

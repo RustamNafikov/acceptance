@@ -1,7 +1,6 @@
 package com.inadco.acceptance.sitemodel.impl
 
 import java.util.List
-import java.util.HashMap
 import org.slf4j.LoggerFactory
 import com.inadco.acceptance.sitemodel.impl.PageImpl
 import com.inadco.acceptance.sitemodel.SiteModel
@@ -17,33 +16,14 @@ class SettingsBasedSiteModel implements SiteModel {
 	val List<Page> pages
 
 	private new() {
-		LOG.info("in new")
-		val List<String> lines = SettingsImpl.instance.siteModel.asList
-		val headerRow = lines.head.replaceAll(" ", "").toLowerCase.split('\t').
-			toList
 
-		val unfilteredElements = lines.map [ row |
-			//skip header row and comments, capture all others
-			if(row.equals(lines.head) || row.startsWith('//') ||
-				row.startsWith('#')) {
-				return null
-			} else {
-				val cell = row.split('\t').toList
+		//get a mapsList from the SiteModel File
+		val ml = SettingsImpl.instance.siteModel.asMapsList
 
-				//create a map: header(key), cell(value)
-				val map = new HashMap<String, String>
-				headerRow.forEach[
-					map.put(it, cell.get(headerRow.indexOf(it)))]
-				LOG.trace("the map: {}", map)
+		//create a general list of elements from the mapsList
+		val elements = ml.map[return new ElementImpl(this, it) as Element]
 
-				//create an Element using the map
-				return new ElementImpl(this, map) as Element
-			}
-		]
-
-		val elements = unfilteredElements.filterNull.toList
-
-		//get a set of pages from out of the filtered elements list
+		//create the containing pages list from the general list of elements 
 		val containingPages = elements.map[it.pageName].toSet
 
 		//Make a list of Pages and place the elements that belong to each page into it
@@ -51,6 +31,7 @@ class SettingsBasedSiteModel implements SiteModel {
 			return new PageImpl(
 				elements.filter[it.pageName.equals(page)].toList) as Page
 		].toList
+		LOG.trace("Model Complete")
 	}
 
 	static def getInstance() {

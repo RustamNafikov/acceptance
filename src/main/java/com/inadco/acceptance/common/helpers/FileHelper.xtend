@@ -43,7 +43,7 @@ class FileHelper {
 	* @return the file's contents as a mapped list of lines (header-row derived)
 	*/
 	static def List<Map<String, String>> asMapsList(File file) {
-		LOG.info("creating maps list from file: {}", file.name)
+		LOG.trace("creating maps list from file: {}", file.name)
 		val List<String> lines = file.asList
 		val headerRow = lines.head.replaceAll(" ", "").toLowerCase.split('\t').
 			toList

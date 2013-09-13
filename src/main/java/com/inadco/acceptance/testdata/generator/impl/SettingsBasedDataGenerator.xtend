@@ -29,7 +29,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 		val List<String> dataItemNames = new ArrayList<String>
 		dataItems.forEach[dataItemNames.add(it.name)]
 
-		LOG.info("getting value for dataItem : {}\n\tthese are dataItems: {}",
+		LOG.trace("getting value for dataItem : {}\n\tthese are dataItems: {}",
 			dataItemName, dataItemNames)
 		dataItems.filter[it.name.equals(dataItemName)].head.value
 

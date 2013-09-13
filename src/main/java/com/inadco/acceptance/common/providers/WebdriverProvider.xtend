@@ -21,7 +21,7 @@ class WebdriverProvider {
 	* @return a selenium-backed WebDriver
 	*/
 	static def WebDriver webdriver(String driverName) {
-		LOG.debug("specified driver: {}", driverName)
+		LOG.trace("specified driver: {}", driverName)
 
 		switch (driverName) {
 			case "FirefoxDriver": {

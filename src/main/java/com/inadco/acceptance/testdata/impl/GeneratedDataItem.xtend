@@ -61,7 +61,7 @@ class GeneratedDataItem implements DataItem {
 	override getValue() {
 		val result = prototypeValue.replaceAll("\\$\\{unique\\}", dataGenerator.unique).
 			ifValid
-		LOG.info("generated - {} : {}", name, result)
+		LOG.trace("generated - {} : {}", name, result)
 		result
 	}
 

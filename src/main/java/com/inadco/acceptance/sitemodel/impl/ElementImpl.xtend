@@ -6,6 +6,7 @@ import org.openqa.selenium.By
 import com.inadco.acceptance.sitemodel.Element
 import static com.inadco.acceptance.sitemodel.descriptors.ElementType.*
 import com.inadco.acceptance.sitemodel.SiteModel
+import static extension com.inadco.acceptance.common.helpers.InstancePopulator.*
 
 /**
  * a basic implementation of the Element interface
@@ -35,27 +36,12 @@ class ElementImpl implements Element {
 	new(SiteModel siteModel, Map<String, String> properties) throws IllegalArgumentException{
 
 		this.siteModel = siteModel
-
-		//List of mapped fields in ElementImpl
-		val stringFields = ElementImpl.declaredFields.filter[
-			it.type.equals(String)]
-
-		//for each field, fetch the field from the map, and assign that to the field
-		stringFields.forEach [
-			it.setAccessible(true)
-			val fName = it.name.toLowerCase
-			val value = properties.get(fName)
-			if(value == null) {
-				LOG.error("expected property: {} was not found", fName)
-				throw new IllegalArgumentException(
-					"expected property: " + fName + " was not found")
-			}
-			it.set(this, value)
-		]
+		this.populate(properties)
 
 	}
 
 	private def toBy(String identifier, String by) {
+			LOG.trace("creating a By using: {}, {}", identifier, by)
 		switch by {
 			case "name": return By::name(identifier)
 			case "linkText": return By::linkText(identifier)
@@ -107,6 +93,5 @@ class ElementImpl implements Element {
 	override getHtmlUnitLocator() {
 		toBy(htmlUnitIdentifier, htmlUnitBy)
 	}
-
 
 }

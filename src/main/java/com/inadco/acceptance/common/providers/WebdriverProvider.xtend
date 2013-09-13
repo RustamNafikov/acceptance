@@ -13,7 +13,7 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
  */
 class WebdriverProvider {
 
-	static val LOG = LoggerFactory.getLogger(WebdriverProvider);
+	static val LOG = LoggerFactory.getLogger(WebdriverProvider)
 
 	/**
 	* 

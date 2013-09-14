@@ -43,6 +43,12 @@ interface Background {
 	def void typing(String elementName)
 
 	/**
+	 * Attempts to fill in all values for the fields on the current page 
+	 * that are still blank and click the submit button 
+	 */
+	def void submit()
+
+	/**
 	* Causes the test to wait for a period of time
 	*/
 	def void pauseFor(int timeInSeconds)

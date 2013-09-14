@@ -1,12 +1,19 @@
 package com.inadco.acceptance.sitemodel
 
 import org.openqa.selenium.By
+import java.util.List
 
 interface Page {
 	/**
+	 * @param the name of the Element to find
 	 * @return the Element within this page, if it exists
 	 */
 	def Element getElement(String elementName)
+
+	/**
+	 * @return a List of the Elements within this page 
+	 */
+	def List<Element> getElements()
 
 	/**
 	 * @return the name of this page

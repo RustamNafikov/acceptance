@@ -2,6 +2,7 @@ package com.inadco.acceptance.sitemodel
 
 import com.inadco.acceptance.sitemodel.Page
 import org.openqa.selenium.By
+import java.util.List
 
 describe "Page" {
 	extension Page = new AperPage
@@ -15,6 +16,7 @@ describe "Page" {
 	
 	def verifyTypes{
 		| actual         | expected |
+		| elements       | List     |
 		| getElement("") | Element  |
 	}
 	fact verifyValues.forEach[actual should be expected]

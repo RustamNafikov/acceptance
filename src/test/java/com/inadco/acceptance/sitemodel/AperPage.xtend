@@ -11,6 +11,7 @@ class AperPage implements Page {
 	val url = "/aper-url"
 	val firefoxLocator = By.name(name)
 	val htmlUnitLocator = By.name(name)
+	val elements = #{element, element}.toList
 
 	override getElement(String elementName) {
 		element

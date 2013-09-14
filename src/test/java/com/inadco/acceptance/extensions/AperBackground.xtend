@@ -28,4 +28,7 @@ class AperBackground implements Background {
 	override pauseFor(int timeInSeconds) {
 	}
 
+	override submit() {
+	}
+
 }

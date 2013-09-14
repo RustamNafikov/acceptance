@@ -31,6 +31,8 @@ class BackgroundImpl implements Background { //
 	var currentPage = initialPage
 
 	new(Class<?> referringFeature, String lastModified) {
+		LOG.info("new Background for: {}, lastMod: {}",
+			referringFeature.simpleName, lastModified)
 		this.referringFeature = referringFeature.simpleName
 		this.lastModified = lastModified
 		wd.get(settings.lcxUrl + initialPage.url)
@@ -63,6 +65,13 @@ class BackgroundImpl implements Background { //
 		elementName.elementLocator.find.sendKeys(
 			getTypingValue(elementName)
 		)
+	}
+
+	override submit() {
+		val typable = currentPage.elements.filter[!it.typing.empty]
+		typable.forEach[(it.name).typing]
+		"Submit".clicking
+
 	}
 
 	override closeDriver() {

@@ -8,7 +8,6 @@ import com.inadco.acceptance.common.settings.impl.SettingsImpl
 import static extension org.apache.commons.lang3.RandomStringUtils.*
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.testdata.impl.GeneratedDataItem
-import java.util.ArrayList
 
 class SettingsBasedDataGenerator implements DataGenerator {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedDataGenerator)
@@ -26,13 +25,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 	}
 
 	override getValue(String dataItemName) {
-		val List<String> dataItemNames = new ArrayList<String>
-		dataItems.forEach[dataItemNames.add(it.name)]
-
-		LOG.trace("getting value for dataItem : {}\n\tthese are dataItems: {}",
-			dataItemName, dataItemNames)
 		dataItems.filter[it.name.equals(dataItemName)].head.value
-
 	}
 
 	override getUnique() {

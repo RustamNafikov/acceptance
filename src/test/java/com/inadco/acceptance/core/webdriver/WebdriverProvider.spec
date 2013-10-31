@@ -8,8 +8,8 @@ describe WebdriverProvider {
 	
 	def verifyTypes {
 		| actual           |expected   |
-		| "HtmlUnitDriver" | WebDriver |
 		| "FirefoxDriver"  | WebDriver |
+		| "HtmlUnitDriver" | WebDriver |
 	}
 	
 	fact verifyTypes.forEach[

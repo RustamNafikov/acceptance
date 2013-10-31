@@ -21,7 +21,7 @@ class FileHelper {
 		new ConfigurationBuilder().setUrls(
 			ClasspathHelper.forPackage("com.inadco")).setScanners(
 			new ResourcesScanner())).getResources(
-		Pattern.compile(".*(\\.csv|\\.conf|\\.txt)"))
+		Pattern.compile(".*(\\.csv|\\.conf|\\.txt|\\.xpi)"))
 
 	/**
 	* @Param the name of the resource file (expected to be on the classpath)

@@ -26,9 +26,7 @@ class WebdriverProvider {
 		switch (driverName) {
 			case "FirefoxDriver": {
 				val profile = new FirefoxProfile()
-				profile.addExtension(
-					"/res/webdriver/firefox/extensions/firebug-1.12.0.xpi".
-						resourceAsFile)
+				profile.addExtension("firebug-1.12.0.xpi".resourceAsFile)
 				return new FirefoxDriver(profile)
 			}
 			case "HtmlUnitDriver":

@@ -3,6 +3,8 @@ package com.inadco.acceptance.common.settings
 import java.io.File
 
 describe Settings {
+	
+	
 	extension Settings = new AperSettings
 	def verifyValues{
 		| actual           | expected                          |
@@ -17,6 +19,8 @@ describe Settings {
 		| siteModel | File     |
 		| dataItems | File     |
 	}
+
+	
 	fact verifyValues.forEach[actual should be expected]
 	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 }

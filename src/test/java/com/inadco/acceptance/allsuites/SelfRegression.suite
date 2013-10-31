@@ -17,6 +17,7 @@ This is internal regression testing for the acceptance testing framework
 
 ## common/settings
 -"Settings"
+-"SettingsProvider"
 
 ## core/sitemodel
 -"Element"

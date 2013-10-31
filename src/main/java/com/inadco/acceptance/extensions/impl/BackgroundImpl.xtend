@@ -9,9 +9,9 @@ import com.inadco.acceptance.common.settings.Settings
 import com.inadco.acceptance.common.settings.impl.SettingsImpl
 import com.inadco.acceptance.extensions.Background
 
-import com.inadco.acceptance.common.providers.SiteModelProvider
-import com.inadco.acceptance.common.providers.WebdriverProvider
-import com.inadco.acceptance.common.providers.TestDataProvider
+import com.inadco.acceptance.core.sitemodel.SiteModelProvider
+import com.inadco.acceptance.core.webdriver.WebdriverProvider
+import com.inadco.acceptance.core.testdata.TestDataProvider
 import org.openqa.selenium.support.ui.ExpectedConditions
 
 /**

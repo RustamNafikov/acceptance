@@ -2,7 +2,7 @@ package com.inadco.acceptance.common.helpers
 
 import org.slf4j.LoggerFactory
 import static extension org.apache.commons.lang3.RandomStringUtils.*
-import com.inadco.acceptance.testdata.DataItem
+import com.inadco.acceptance.core.testdata.DataItem
 
 class DataGenerator {
 	static val LOG = LoggerFactory.getLogger(DataGenerator)

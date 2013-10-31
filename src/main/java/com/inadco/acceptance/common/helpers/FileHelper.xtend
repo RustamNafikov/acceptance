@@ -6,19 +6,30 @@ import java.util.List
 import org.slf4j.LoggerFactory
 import java.util.HashMap
 import java.util.Map
+import org.reflections.Reflections
+import java.util.regex.Pattern
+import org.reflections.util.ConfigurationBuilder
+import org.reflections.scanners.ResourcesScanner
+import org.reflections.util.ClasspathHelper
 
 /**
  * Handles common io tasks from a centralized class
  */
 class FileHelper {
 	static val LOG = LoggerFactory.getLogger(FileHelper)
+	static val RESOURCES = new Reflections(
+		new ConfigurationBuilder().setUrls(
+			ClasspathHelper.forPackage("com.inadco")).setScanners(
+			new ResourcesScanner())).getResources(
+		Pattern.compile(".*(\\.csv|\\.conf|\\.txt)"))
 
 	/**
 	* @Param the name of the resource file (expected to be on the classpath)
 	* @Return the URI for the named resource
 	*/
-	static package def getResourceUri(String resourceName) {
-		FileHelper.getResource(resourceName).toURI
+	static package def getResourceUri(String resourcePath) {
+
+		FileHelper.getResource(resourcePath).toURI
 	}
 
 	/**
@@ -26,7 +37,14 @@ class FileHelper {
 	* @Return the File Located associated with that resource name
 	*/
 	static def getResourceAsFile(String resourceName) {
-		new File(resourceName.resourceUri)
+		var uri = (File.separator +
+			RESOURCES.filter[it.endsWith(resourceName)].head).resourceUri
+
+		if(uri == null) {
+			throw new IllegalArgumentException
+		}
+		new File(uri)
+
 	}
 
 	/**

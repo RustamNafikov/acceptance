@@ -16,7 +16,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- jnario: external -->
+		<!-- behavior driven development (jnario): external -->
 		<dependency>
 
 			<groupId>org.jnario</groupId>
@@ -34,7 +34,7 @@
 			<version>4.10</version>
 		</dependency>
 
-		<!-- webdriver: external -->
+		<!-- browser automation (selenium-webdriver): external -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -52,14 +52,14 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Configuration(typesafe Config): external -->
+		<!-- Configuration(typesafe config): external -->
 		<dependency>
 			<groupId>com.typesafe</groupId>
 			<artifactId>config</artifactId>
 			<version>1.0.2</version>
 		</dependency>
 
-		<!-- Logging: external -->
+		<!-- Logging (logback): external -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
@@ -78,6 +78,13 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.3</version>
+		</dependency>
+
+		<!-- Reflection Util (reflections): external -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.9-RC1</version>
 		</dependency>
 
 	</dependencies>

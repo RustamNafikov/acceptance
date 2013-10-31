@@ -8,10 +8,11 @@ import java.util.List
 
 describe FileHelper {
 	
-	String resourceToFind = "/res/TestFileHelper.txt"
+	String resourceToFind = "TestFileHelper.txt"
+	String resourceUriToGet = "/res/TestFileHelper.txt"
 
 	fact "resourceUri - provide resource file URI"{
-		val uri = resourceToFind.resourceUri
+		val uri = resourceUriToGet.resourceUri
 		uri should be URI
 		uri.toString should contain resourceToFind
 	}

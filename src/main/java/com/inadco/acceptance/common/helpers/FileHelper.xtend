@@ -13,7 +13,7 @@ import org.reflections.scanners.ResourcesScanner
 import org.reflections.util.ClasspathHelper
 
 /**
- * Handles common io tasks from a centralized class
+ * Handles common I/O tasks from a centralized class
  */
 class FileHelper {
 	static val LOG = LoggerFactory.getLogger(FileHelper)
@@ -24,12 +24,14 @@ class FileHelper {
 		Pattern.compile(".*(\\.csv|\\.conf|\\.txt|\\.xpi)"))
 
 	/**
+	* FOR INTERNAL USE ONLY
+	* gets the uri of resource
 	* @Param the name of the resource file (expected to be on the classpath)
 	* @Return the URI for the named resource
 	*/
-	static package def getResourceUri(String resourcePath) {
+	static package def getResourceUri(String resourceName) {
 
-		FileHelper.getResource(resourcePath).toURI
+		FileHelper.getResource(resourceName).toURI
 	}
 
 	/**

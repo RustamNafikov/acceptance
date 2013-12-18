@@ -7,19 +7,20 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import java.util.List
 
 describe FileHelper {
-	
-	String resourceToFind = "TestFileHelper.txt"
-	String resourceUriToGet = "/res/TestFileHelper.txt"
+	val resourcePath = "/aperproject/res/"
+	val oddPath = "/aperproject/odd/"
+	val resourceToFind = "TestFileHelper.txt"
+	val resourceUriToGet = "/com/inadco/aperproject/odd/TestFileHelper.txt"
 
-	fact "resourceUri - provide resource file URI"{
+	fact "getResourceUri - provide resource file URI"{
 		val uri = resourceUriToGet.resourceUri
 		uri should be URI
 		uri.toString should contain resourceToFind
 	}
 	
-	File file
-	fact "resourceAsFile - provide resource File"{
-		val file = resourceToFind.resourceAsFile
+	
+	fact "getResourceAsFile - provide resource File"{
+		val file = (oddPath + resourceToFind).resourceAsFile
 		file should be File
 		file.exists should be true
 		file.absolutePath should contain resourceToFind
@@ -34,8 +35,13 @@ describe FileHelper {
 	}
 	
 	fact "asList -provide File contents as a List of Strings"{
-		val list = resourceToFind.resourceAsFile.asList
+	val list = (oddPath + resourceToFind).resourceAsFile.asList
 		list should be List
 		listCheckTable.forEach[list.get(listPosition) should be expectedContents]
+	}
+	
+	fact "asMapsList -- TEST NOT IMPLEMENTED YET"{
+		assert false
+		
 	}
 }

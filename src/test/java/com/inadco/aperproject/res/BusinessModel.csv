@@ -1,0 +1,15 @@
+Object	Type	Name	Source	Associated With	Belongs To	Validation Rule	Prototype Value
+User	Object	User		Advertiser			
+User	Property	FirstName	User Provided			[\w]{1,}	FirstName${unique}
+User	Property	LastName	User Provided			[\w]{1,}	LastName${unique}
+User	Property	UserName	User Provided			.*	email-${unique}@inadco.com
+User	Property	Password	User Provided			.*	12345678
+Advertiser	Object	Advertiser		User			
+Advertiser		CompanyName	User Provided			.*	CompanyName${unique}
+Advertiser		Address	User Provided			.*	12 ${unique} st
+Advertiser		City	User Provided			.*	city${unique}
+Advertiser		State	User Provided			.*	CA
+Advertiser		Zip	User Provided			.*	95050
+Advertiser		Phone	User Provided			.*	4085526882
+Campaign	Object				Advertiser		
+//			Application Provided				…

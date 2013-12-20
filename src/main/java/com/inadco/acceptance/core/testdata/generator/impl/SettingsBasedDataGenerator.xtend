@@ -11,6 +11,7 @@ import com.inadco.acceptance.core.testdata.impl.GeneratedDataItem
 
 class SettingsBasedDataGenerator implements DataGenerator {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedDataGenerator)
+	val SETTINGS = new SettingsImpl
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
 	val List<DataItem> dataItems
@@ -18,7 +19,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 	new() {
 
 		//get a mapsList from the DataItems File
-		val ml = SettingsImpl.instance.dataItems.asMapsList
+		val ml = SETTINGS.dataItems.asMapsList
 
 		//populate the list of dataItems using the mapsList
 		dataItems = ml.map[return new GeneratedDataItem(this, it) as DataItem]

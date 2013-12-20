@@ -21,9 +21,7 @@ class SiteModelProvider {
 	* @return a site model corresponding the siteModel property in application.conf
 	*/
 	static def getSiteModel() {
-
-		SettingsBasedSiteModel.instance
-
+		new SettingsBasedSiteModel
 	}
 
 }

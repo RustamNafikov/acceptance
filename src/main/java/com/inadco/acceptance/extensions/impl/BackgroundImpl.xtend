@@ -20,10 +20,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
 
-	val Settings settings = SettingsImpl.instance
+	val Settings SETTINGS = new SettingsImpl
 	val wd = WebdriverProvider.webdriver
 	val sm = SiteModelProvider.siteModel
-	val dp = TestDataProvider.testData
+	val dp = new TestDataProvider().testData
+//	val dp = TestDataProvider.testData
 	val String referringFeature
 	val String lastModified
 
@@ -35,7 +36,7 @@ class BackgroundImpl implements Background { //
 			referringFeature.simpleName, lastModified)
 		this.referringFeature = referringFeature.simpleName
 		this.lastModified = lastModified
-		wd.get(settings.lcxUrl + initialPage.url)
+		wd.get(SETTINGS.lcxUrl + initialPage.url)
 	}
 
 	override at(String pageName) {
@@ -102,7 +103,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct element locator for this Background's SiteModel / Webdriver combination
 	private def getElementLocator(String elementName) {
 		val e = currentPage.getElement(elementName)
-		switch settings.webdriver {
+		switch SETTINGS.webdriver {
 			case "FirefoxDriver": e.firefoxLocator
 			case "HtmlUnitDriver": e.htmlUnitLocator
 		}
@@ -111,7 +112,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct page locator for this Background's SiteModel / Webdriver combination
 	private def getPageLocator(String pageName) {
 		val p = sm.getPage(pageName)
-		switch settings.webdriver {
+		switch SETTINGS.webdriver {
 			case "FirefoxDriver": p.firefoxLocator
 			case "HtmlUnitDriver": p.htmlUnitLocator
 		}

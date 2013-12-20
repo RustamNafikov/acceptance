@@ -14,6 +14,7 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 class WebdriverProvider {
 
 	static val LOG = LoggerFactory.getLogger(WebdriverProvider)
+	static val SETTINGS = new SettingsImpl
 
 	/**
 	* 
@@ -41,6 +42,6 @@ class WebdriverProvider {
 	* @return a selenium-backed WebDriver corresponding the webdriver property in application.conf
 	*/
 	static def getWebdriver() {
-		webdriver(SettingsImpl.instance.webdriver)
+		webdriver(SETTINGS.webdriver)
 	}
 }

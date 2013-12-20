@@ -1,9 +1,16 @@
 package com.inadco.acceptance.common.settings
 
+/**
+ * TODO: this
+ */
 class SettingsProvider {
-	static Settings internal
+	static var Settings internal
+	
+	new(){
+		
+	}
 
-	static def void intoProvider(Settings effectiveSettings) {
+	def void intoProvider(Settings effectiveSettings) {
 		if(internal == null) {
 			internal = effectiveSettings
 		} else {
@@ -11,10 +18,8 @@ class SettingsProvider {
 		}
 	}
 
-	static def instance() {
-		if(internal == null) {
-			throw new RuntimeException
-		}
+	def getInternal() {
 		internal
 	}
+
 }

@@ -40,8 +40,5 @@ describe FileHelper {
 		listCheckTable.forEach[list.get(listPosition) should be expectedContents]
 	}
 	
-	fact "asMapsList -- TEST NOT IMPLEMENTED YET"{
-		assert false
-		
-	}
+	//	TODO: fact "asMapsList" should be "implemented"
 }

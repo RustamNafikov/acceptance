@@ -10,40 +10,39 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 
 /**
 * Provides application-environment specific settings as defined in application.conf
+* *** THIS IS MONOSTATE ***
 */
 class SettingsImpl implements Settings {
 
 	val LOG = LoggerFactory.getLogger(this.class)
 	static val Settings me = new SettingsImpl
 
-	var Config internalConfig
-	var String lcxUrl
-	var String webdriver
-	var File siteModel
-	var File dataItems
-	var String testDataStore
-	var boolean useTestDataStore
+	static var isInitialized = false
 
-	private new() {
-		val rootConfig = ConfigFactory.load
-		LOG.debug("new Config with:\n{}", rootConfig)
-		internalConfig = rootConfig.getConfig("internal")
-		LOG.debug("internal part:\n{}", internalConfig)
+	static Config internalConfig
+	static String lcxUrl
+	static String webdriver
+	static File siteModel
+	static File dataItems
+	static String testDataStore
+	static boolean useTestDataStore
 
-		lcxUrl = "lcxUrl".asString
-		webdriver = "webdriver".asString
+	public new() {
+		if(!isInitialized) {
+			val rootConfig = ConfigFactory.load
+			LOG.debug("new Config with:\n{}", rootConfig)
+			internalConfig = rootConfig.getConfig("internal")
+			LOG.debug("internal part:\n{}", internalConfig)
 
-		siteModel = "siteModel".asFile
-		dataItems = "dataItems".asFile
-		testDataStore = "testDataStore".asString
-		useTestDataStore = "useTestDataStore".asBoolean
-	}
+			lcxUrl = "lcxUrl".asString
+			webdriver = "webdriver".asString
 
-	/**
-	* @return the Settings represented by SettingsImpl
-	*/
-	static def instance() {
-		return me
+			siteModel = "siteModel".asFile
+			dataItems = "dataItems".asFile
+			testDataStore = "testDataStore".asString
+			useTestDataStore = "useTestDataStore".asBoolean
+			isInitialized = true
+		}
 	}
 
 	override getLcxUrl() {

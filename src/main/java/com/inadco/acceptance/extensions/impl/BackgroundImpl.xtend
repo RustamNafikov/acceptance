@@ -5,8 +5,8 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.slf4j.LoggerFactory
 
-import com.inadco.acceptance.common.settings.Settings
-import com.inadco.acceptance.common.settings.impl.SettingsImpl
+import com.inadco.acceptance.common.settings.SettingsProvider
+import com.inadco.acceptance.common.settings.impl.BasicSettings
 import com.inadco.acceptance.extensions.Background
 
 import com.inadco.acceptance.core.sitemodel.SiteModelProvider
@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
 
-	val Settings SETTINGS = new SettingsImpl
+	val SettingsProvider SETTINGS = new BasicSettings
 	val wd = WebdriverProvider.webdriver
 	val sm = SiteModelProvider.siteModel
 	val dp = new TestDataProvider().testData

@@ -4,14 +4,14 @@ import com.inadco.acceptance.core.testdata.generator.DataGenerator
 import org.slf4j.LoggerFactory
 import java.util.List
 import com.inadco.acceptance.core.testdata.DataItem
-import com.inadco.acceptance.common.settings.impl.SettingsImpl
+import com.inadco.acceptance.common.settings.impl.BasicSettings
 import static extension org.apache.commons.lang3.RandomStringUtils.*
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.core.testdata.impl.GeneratedDataItem
 
 class SettingsBasedDataGenerator implements DataGenerator {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedDataGenerator)
-	val SETTINGS = new SettingsImpl
+	val SETTINGS = new BasicSettings
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
 	val List<DataItem> dataItems

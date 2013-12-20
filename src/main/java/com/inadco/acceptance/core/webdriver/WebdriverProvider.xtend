@@ -3,7 +3,7 @@ package com.inadco.acceptance.core.webdriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.slf4j.LoggerFactory
-import com.inadco.acceptance.common.settings.impl.SettingsImpl
+import com.inadco.acceptance.common.settings.impl.BasicSettings
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
@@ -14,7 +14,7 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 class WebdriverProvider {
 
 	static val LOG = LoggerFactory.getLogger(WebdriverProvider)
-	static val SETTINGS = new SettingsImpl
+	static val SETTINGS = new BasicSettings
 
 	/**
 	* 

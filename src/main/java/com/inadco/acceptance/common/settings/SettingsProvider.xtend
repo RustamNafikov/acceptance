@@ -1,25 +1,39 @@
 package com.inadco.acceptance.common.settings
 
+import java.io.File
+
 /**
- * TODO: this
+ * represents application-environment specific settings
  */
-class SettingsProvider {
-	static var Settings internal
-	
-	new(){
-		
-	}
+interface SettingsProvider {
+	/**
+	* @return the LCX Url
+	*/
+	def String getLcxUrl()
 
-	def void intoProvider(Settings effectiveSettings) {
-		if(internal == null) {
-			internal = effectiveSettings
-		} else {
-			throw new RuntimeException
-		}
-	}
+	/**
+	* @return the Webdriver
+	*/
+	def String getWebdriver()
 
-	def getInternal() {
-		internal
-	}
+	/**
+	* @return the Site Model Definition File
+	*/
+	def File getSiteModel()
 
+	/**
+	 * @return the Data Items Definiton File
+	 */
+	def File getDataItems()
+
+	/**
+	 * @return the Test Data Store File
+	 */
+	// mrobertson - returns a string until this is needed 
+	def String getTestDataStore()
+
+	/**
+	 * @return if the Test Data Store should be used
+	 */
+	def boolean getUseTestDataStore()
 }

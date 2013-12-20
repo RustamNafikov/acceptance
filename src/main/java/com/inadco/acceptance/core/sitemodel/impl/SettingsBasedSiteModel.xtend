@@ -6,13 +6,13 @@ import com.inadco.acceptance.core.sitemodel.impl.PageImpl
 import com.inadco.acceptance.core.sitemodel.SiteModel
 import com.inadco.acceptance.core.sitemodel.Page
 import com.inadco.acceptance.core.sitemodel.Element
-import com.inadco.acceptance.common.settings.impl.SettingsImpl
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
+import com.inadco.acceptance.common.settings.impl.BasicSettings
 
 class SettingsBasedSiteModel implements SiteModel {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedSiteModel)
-	val SETTINGS = new SettingsImpl
+	val SETTINGS = new BasicSettings
 	static var isInitialized = false
 //	static val SiteModel me = new SettingsBasedSiteModel
 	static var List<Page> pages

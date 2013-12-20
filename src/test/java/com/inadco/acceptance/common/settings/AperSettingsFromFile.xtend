@@ -1,10 +1,10 @@
 package com.inadco.acceptance.common.settings
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
-import com.inadco.acceptance.common.settings.Settings
+import com.inadco.acceptance.common.settings.SettingsProvider
 
 @Data
-class AperSettings implements Settings {
+class AperSettingsFromFile implements SettingsProvider {
 	val lcxUrl = "http://www.sitedoesnotexist.com"
 	val webdriver = "FirefoxDriver"
 	val siteModel = "SiteModel.csv".resourceAsFile

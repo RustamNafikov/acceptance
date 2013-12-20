@@ -16,7 +16,6 @@ This is internal regression testing for the acceptance testing framework
 -"FileHelper"
 
 ## common/settings
--"Settings"
 -"SettingsProvider"
 
 ## core/sitemodel

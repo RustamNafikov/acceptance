@@ -5,17 +5,16 @@ import com.typesafe.config.ConfigFactory
 import com.typesafe.config.Config
 import java.io.File
 
-import com.inadco.acceptance.common.settings.Settings
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
+import com.inadco.acceptance.common.settings.SettingsProvider
 
 /**
 * Provides application-environment specific settings as defined in application.conf
 * *** THIS IS MONOSTATE ***
 */
-class SettingsImpl implements Settings {
+class BasicSettings implements SettingsProvider {
 
 	val LOG = LoggerFactory.getLogger(this.class)
-	static val Settings me = new SettingsImpl
 
 	static var isInitialized = false
 

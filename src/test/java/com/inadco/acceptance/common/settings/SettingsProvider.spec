@@ -1,6 +1,26 @@
 package com.inadco.acceptance.common.settings
 
+import java.io.File
+
 describe SettingsProvider {
-	//not yet implemented
-	//	TODO: fact assert this should be "implemented"
+	
+	
+	extension SettingsProvider = new AperSettings
+	def verifyValues{
+		| actual           | expected                          |
+		| lcxUrl           | "http://www.sitedoesnotexist.com" |
+		| webdriver        | "FirefoxDriver"                   |
+		| testDataStore    | "-DOES_NOT_EXIST-"                |
+		| useTestDataStore | false                             |
+	}
+	
+	def verifyTypes{
+		| actual    | expected |
+		| siteModel | File     |
+		| dataItems | File     |
+	}
+
+	
+	fact verifyValues.forEach[actual should be expected]
+	fact verifyTypes.forEach[ expected.isInstance(actual) should be true]
 }

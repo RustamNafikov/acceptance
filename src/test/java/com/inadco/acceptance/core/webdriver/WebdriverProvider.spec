@@ -2,9 +2,10 @@ package com.inadco.acceptance.core.webdriver
 
 import com.inadco.acceptance.core.webdriver.WebdriverProvider
 import org.openqa.selenium.WebDriver
-import static extension com.inadco.acceptance.core.webdriver.WebdriverProvider.*
+import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriver
 
 describe WebdriverProvider {
+	extension SettingsBasedWebdriver
 	
 	def verifyTypes {
 		| actual           |expected   |

@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory
 import com.inadco.acceptance.common.settings.impl.BasicSettings
 import com.inadco.acceptance.extensions.Background
 
-import com.inadco.acceptance.core.webdriver.WebdriverProvider
 import org.openqa.selenium.support.ui.ExpectedConditions
 import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
 import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
+import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriver
 
 /**
  * a basic implementation of Background interface
@@ -22,7 +22,7 @@ class BackgroundImpl implements Background { //
 	val settings = new BasicSettings
 	val sm = new SettingsBasedSiteModel
 	val td = new SettingsBasedDataGenerator
-	val wd = WebdriverProvider.webdriver
+	val wd = (new SettingsBasedWebdriver).webdriver
 
 	//	val dp = TestDataProvider.testData
 	val String referringFeature

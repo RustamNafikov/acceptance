@@ -38,10 +38,6 @@ class SettingsBasedSiteModel implements SiteModel {
 		}
 	}
 
-//	static def getInstance() {
-//		me
-//	}
-
 	override getPage(String pageName) {
 		pages.filter[it.name.equals(pageName)].head
 	}

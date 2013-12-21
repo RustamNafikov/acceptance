@@ -12,16 +12,15 @@ import com.inadco.acceptance.common.settings.impl.BasicSettings
 
 class SettingsBasedSiteModel implements SiteModel {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedSiteModel)
-	val SETTINGS = new BasicSettings
+	val settings = new BasicSettings
 	static var isInitialized = false
-//	static val SiteModel me = new SettingsBasedSiteModel
 	static var List<Page> pages
 
 	public new() {
 		if(!isInitialized) {
 
 			//get a mapsList from the SiteModel File
-			val ml = SETTINGS.siteModel.asMapsList
+			val ml = settings.siteModel.asMapsList
 
 			//create a general list of elements from the mapsList
 			val elements = ml.map[return new ElementImpl(this, it) as Element]

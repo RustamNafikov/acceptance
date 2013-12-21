@@ -1,11 +1,10 @@
 package com.inadco.acceptance.core.testdata
 
-import com.inadco.acceptance.core.testdata.generator.DataGenerator
-import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
-
-class TestDataProvider {
-	def getTestData() {
-		new SettingsBasedDataGenerator as DataGenerator
-	}
+interface TestDataProvider {
+	/**
+	 * @param dataItemName the name of the data item to get a value for
+	 * @return a value that would be appropriate for the data item
+	 */
+	def String getValue(String dataItemName)
 
 }

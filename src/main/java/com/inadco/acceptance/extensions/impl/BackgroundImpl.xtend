@@ -5,14 +5,13 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.slf4j.LoggerFactory
 
-import com.inadco.acceptance.common.settings.SettingsProvider
 import com.inadco.acceptance.common.settings.impl.BasicSettings
 import com.inadco.acceptance.extensions.Background
 
-import com.inadco.acceptance.core.sitemodel.SiteModelProvider
 import com.inadco.acceptance.core.webdriver.WebdriverProvider
-import com.inadco.acceptance.core.testdata.TestDataProvider
 import org.openqa.selenium.support.ui.ExpectedConditions
+import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
+import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
 
 /**
  * a basic implementation of Background interface
@@ -20,11 +19,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
 
-	val SettingsProvider SETTINGS = new BasicSettings
+	val settings = new BasicSettings
+	val sm = new SettingsBasedSiteModel
+	val td = new SettingsBasedDataGenerator
 	val wd = WebdriverProvider.webdriver
-	val sm = SiteModelProvider.siteModel
-	val dp = new TestDataProvider().testData
-//	val dp = TestDataProvider.testData
+
+	//	val dp = TestDataProvider.testData
 	val String referringFeature
 	val String lastModified
 
@@ -36,7 +36,7 @@ class BackgroundImpl implements Background { //
 			referringFeature.simpleName, lastModified)
 		this.referringFeature = referringFeature.simpleName
 		this.lastModified = lastModified
-		wd.get(SETTINGS.lcxUrl + initialPage.url)
+		wd.get(settings.lcxUrl + initialPage.url)
 	}
 
 	override at(String pageName) {
@@ -103,7 +103,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct element locator for this Background's SiteModel / Webdriver combination
 	private def getElementLocator(String elementName) {
 		val e = currentPage.getElement(elementName)
-		switch SETTINGS.webdriver {
+		switch settings.webdriver {
 			case "FirefoxDriver": e.firefoxLocator
 			case "HtmlUnitDriver": e.htmlUnitLocator
 		}
@@ -112,7 +112,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct page locator for this Background's SiteModel / Webdriver combination
 	private def getPageLocator(String pageName) {
 		val p = sm.getPage(pageName)
-		switch SETTINGS.webdriver {
+		switch settings.webdriver {
 			case "FirefoxDriver": p.firefoxLocator
 			case "HtmlUnitDriver": p.htmlUnitLocator
 		}
@@ -121,7 +121,7 @@ class BackgroundImpl implements Background { //
 	//gets the type of value to fetch from the testDataProvider
 	private def getTypingValue(String elementName) {
 		var currentElement = currentPage.getElement(elementName)
-		dp.getValue(currentElement.typing)
+		td.getValue(currentElement.typing)
 	}
 
 }

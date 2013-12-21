@@ -23,7 +23,6 @@ This is internal regression testing for the acceptance testing framework
 
 ## core/testdata
 -"DataItem"
--"TestDataProvider"
 
 ### core/testdata/generator
 -"DataGenerator"

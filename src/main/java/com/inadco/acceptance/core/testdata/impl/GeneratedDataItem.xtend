@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 import static extension com.inadco.acceptance.common.helpers.InstancePopulator.*
 
 /**
- * describes a peice of data that would be utilized by a data provider
+ * describes a piece of data that would be utilized by a data provider
  */
 class GeneratedDataItem implements DataItem {
 	static val LOG = LoggerFactory.getLogger(GeneratedDataItem)

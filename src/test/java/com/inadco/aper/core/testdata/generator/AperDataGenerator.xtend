@@ -1,4 +1,6 @@
-package com.inadco.acceptance.core.testdata.generator
+package com.inadco.aper.core.testdata.generator
+
+import com.inadco.acceptance.core.testdata.generator.DataGenerator
 
 @Data
 class AperDataGenerator implements DataGenerator {

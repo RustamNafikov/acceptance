@@ -1,6 +1,7 @@
 package com.inadco.acceptance.common.settings
 
 import java.io.File
+import com.inadco.aper.common.settings.AperSettings
 
 describe SettingsProvider {
 	

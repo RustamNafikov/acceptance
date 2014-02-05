@@ -2,6 +2,8 @@ package com.inadco.acceptance.core.sitemodel
 
 import org.openqa.selenium.By
 import com.inadco.acceptance.core.sitemodel.descriptors.ElementType
+import com.inadco.aper.core.sitemodel.AperElement
+import com.inadco.aper.core.sitemodel.AperPage
 
 describe "Element" {
 	extension Element = new AperElement

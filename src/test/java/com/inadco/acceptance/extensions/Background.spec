@@ -1,6 +1,7 @@
 package com.inadco.acceptance.extensions
 
 import com.inadco.acceptance.extensions.Background
+import com.inadco.aper.extensions.AperBackground
 
 describe Background {
 	extension Background = new AperBackground

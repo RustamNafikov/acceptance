@@ -4,6 +4,7 @@ import com.inadco.acceptance.core.sitemodel.Page
 import com.inadco.acceptance.core.sitemodel.Element
 import org.openqa.selenium.By
 import java.util.List
+import com.inadco.aper.core.sitemodel.AperPage
 
 describe "Page" {
 	extension Page = new AperPage

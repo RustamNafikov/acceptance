@@ -1,4 +1,6 @@
-package com.inadco.acceptance.core.testdata
+package com.inadco.aper.core.testdata
+
+import com.inadco.acceptance.core.testdata.DataItem
 
 @Data
 class AperDataItem implements DataItem {

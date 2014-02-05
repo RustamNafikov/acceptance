@@ -1,4 +1,4 @@
-package com.inadco.acceptance.core.sitemodel
+package com.inadco.aper.core.sitemodel
 
 import org.openqa.selenium.By
 import com.inadco.acceptance.core.sitemodel.Page

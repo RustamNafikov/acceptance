@@ -1,4 +1,4 @@
-package com.inadco.acceptance.common.settings
+package com.inadco.aper.common.settings
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.common.settings.SettingsProvider

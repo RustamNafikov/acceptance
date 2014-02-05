@@ -1,5 +1,7 @@
 package com.inadco.acceptance.core.testdata.generator
 
+import com.inadco.aper.core.testdata.generator.AperDataGenerator
+
 describe "DataGenerator"{
 extension DataGenerator = new AperDataGenerator
 

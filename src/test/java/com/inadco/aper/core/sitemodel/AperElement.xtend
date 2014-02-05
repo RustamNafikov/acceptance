@@ -1,8 +1,9 @@
-package com.inadco.acceptance.core.sitemodel
+package com.inadco.aper.core.sitemodel
 
 import org.openqa.selenium.By
 import com.inadco.acceptance.core.sitemodel.descriptors.ElementType
 import com.inadco.acceptance.core.sitemodel.Element
+
 
 @Data
 class AperElement implements Element {

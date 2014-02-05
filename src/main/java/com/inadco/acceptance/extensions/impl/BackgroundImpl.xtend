@@ -11,7 +11,7 @@ import com.inadco.acceptance.extensions.Background
 import org.openqa.selenium.support.ui.ExpectedConditions
 import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
 import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
-import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriver
+import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
 
 /**
  * a basic implementation of Background interface
@@ -22,7 +22,7 @@ class BackgroundImpl implements Background { //
 	val settings = new BasicSettings
 	val sm = new SettingsBasedSiteModel
 	val td = new SettingsBasedDataGenerator
-	val wd = (new SettingsBasedWebdriver).webdriver
+	val wd = (new SettingsBasedWebdriverProvider).webdriver
 
 	//	val dp = TestDataProvider.testData
 	val String referringFeature

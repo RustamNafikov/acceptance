@@ -12,9 +12,9 @@ import com.inadco.acceptance.core.webdriver.WebdriverProvider
 /**
  * Merely provides a WebDriver
  */
-class SettingsBasedWebdriver implements WebdriverProvider{
+class SettingsBasedWebdriverProvider implements WebdriverProvider{
 
-	static val LOG = LoggerFactory.getLogger(SettingsBasedWebdriver)
+	static val LOG = LoggerFactory.getLogger(SettingsBasedWebdriverProvider)
 	static val settings = new BasicSettings
 
 	/**

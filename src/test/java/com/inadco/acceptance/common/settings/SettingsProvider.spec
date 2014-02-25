@@ -9,7 +9,7 @@ describe SettingsProvider {
 	extension SettingsProvider = new AperSettings
 	def verifyValues{
 		| actual           | expected                          |
-		| lcxUrl           | "http://www.sitedoesnotexist.com" |
+		| siteUrl           | "http://www.sitedoesnotexist.com" |
 		| webdriver        | "FirefoxDriver"                   |
 		| testDataStore    | "-DOES_NOT_EXIST-"                |
 		| useTestDataStore | false                             |

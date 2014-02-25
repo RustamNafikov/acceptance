@@ -9,20 +9,32 @@ import static extension org.apache.commons.lang3.RandomStringUtils.*
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.core.testdata.impl.GeneratedDataItem
 
+/**
+ * @TODO Make it mono-state
+ * @TODO Remove settings dependence
+ */
 class SettingsBasedDataGenerator implements DataGenerator {
-	static val LOG = LoggerFactory.getLogger(SettingsBasedDataGenerator)
+	val LOG = LoggerFactory.getLogger(this.class)
+
+	static var isInitialized = false
+
 	val settings = new BasicSettings
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
-	val List<DataItem> dataItems
+	static var List<DataItem> dataItems
 
 	new() {
+		if(!isInitialized) {
 
-		//get a mapsList from the DataItems File
-		val ml = settings.dataItems.asMapsList
+			//get a mapsList from the DataItems File
+			val ml = settings.dataItems.asMapsList
 
-		//populate the list of dataItems using the mapsList
-		dataItems = ml.map[return new GeneratedDataItem(this, it) as DataItem]
+			//populate the list of dataItems using the mapsList
+			dataItems = ml.map[
+				return new GeneratedDataItem(this, it) as DataItem]
+			isInitialized = true
+		}
+
 	}
 
 	override getValue(String dataItemName) {

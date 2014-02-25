@@ -15,6 +15,7 @@ import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
 
 /**
  * a basic implementation of Background interface
+ * 
  */
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
@@ -31,12 +32,18 @@ class BackgroundImpl implements Background { //
 	val initialPage = sm.getPage("Login Page")
 	var currentPage = initialPage
 
+	/**
+	 * @TODO: Need to init settings, site model, datagenerator here
+	 * based on the referring feature's parent's (Site Under Test) local settings
+	 * (with a fall-back of basic settings)
+	 */
 	new(Class<?> referringFeature, String lastModified) {
 		LOG.info("new Background for: {}, lastMod: {}",
 			referringFeature.simpleName, lastModified)
 		this.referringFeature = referringFeature.simpleName
+
 		this.lastModified = lastModified
-		wd.get(settings.lcxUrl + initialPage.url)
+		wd.get(settings.siteUrl + initialPage.url)
 	}
 
 	override at(String pageName) {

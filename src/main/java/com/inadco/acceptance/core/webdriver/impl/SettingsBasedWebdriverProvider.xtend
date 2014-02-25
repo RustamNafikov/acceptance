@@ -10,6 +10,8 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.core.webdriver.WebdriverProvider
 
 /**
+ * @TODO: Make mono-state - not pure static methode
+ * @TODO: Remove settings dependence
  * Merely provides a WebDriver
  */
 class SettingsBasedWebdriverProvider implements WebdriverProvider{

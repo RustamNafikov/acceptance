@@ -5,7 +5,7 @@ import com.inadco.acceptance.common.settings.SettingsProvider
 
 @Data
 class AperSettings implements SettingsProvider {
-	val lcxUrl = "http://www.sitedoesnotexist.com"
+	val siteUrl = "http://www.sitedoesnotexist.com"
 	val webdriver = "FirefoxDriver"
 	val siteModel = "SiteModel.csv".getResourceAsFile
 	val dataItems = "DataItems.csv".getResourceAsFile

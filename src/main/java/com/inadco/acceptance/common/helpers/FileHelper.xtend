@@ -31,6 +31,7 @@ class FileHelper {
 	*/
 	static package def getResourceUri(String resourceName) {
 
+		//FileHelper class used as a guaranteed-to-exist reference point
 		FileHelper.getResource(resourceName).toURI
 	}
 
@@ -43,6 +44,7 @@ class FileHelper {
 			RESOURCES.filter[it.endsWith(resourceName)].head).resourceUri
 
 		if(uri == null) {
+			LOG.error("no file was found for resource: {}", resourceName)
 			throw new IllegalArgumentException
 		}
 		new File(uri)

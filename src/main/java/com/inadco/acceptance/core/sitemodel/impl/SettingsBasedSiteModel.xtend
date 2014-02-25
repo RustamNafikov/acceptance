@@ -9,7 +9,11 @@ import com.inadco.acceptance.core.sitemodel.Element
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.common.settings.impl.BasicSettings
-
+/**
+ * @MONO_STATE
+ * Provides a site-model from the settings
+ * @TODO: need to replace this with something more generic (no direct ref to Settings)
+ */
 class SettingsBasedSiteModel implements SiteModel {
 	static val LOG = LoggerFactory.getLogger(SettingsBasedSiteModel)
 	val settings = new BasicSettings
@@ -33,7 +37,7 @@ class SettingsBasedSiteModel implements SiteModel {
 				return new PageImpl(
 					elements.filter[it.pageName.equals(page)].toList) as Page
 			].toList
-			LOG.trace("Model Complete")
+			LOG.trace("Site Model Complete")
 			isInitialized = true
 		}
 	}

@@ -1,4 +1,8 @@
 inadco-acceptance
 =================
 
-User acceptance test
+User acceptance tests
+
+1. Project setup
+
+2. Running tests

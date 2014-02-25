@@ -9,8 +9,8 @@ import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.common.settings.SettingsProvider
 
 /**
+* @MONO_STATE
 * Provides application-environment specific settings as defined in application.conf
-* *** THIS IS MONOSTATE ***
 */
 class BasicSettings implements SettingsProvider {
 
@@ -19,7 +19,7 @@ class BasicSettings implements SettingsProvider {
 	static var isInitialized = false
 
 	static Config internalConfig
-	static String lcxUrl
+	static String siteUrl
 	static String webdriver
 	static File siteModel
 	static File dataItems
@@ -33,7 +33,7 @@ class BasicSettings implements SettingsProvider {
 			internalConfig = rootConfig.getConfig("internal")
 			LOG.debug("internal part:\n{}", internalConfig)
 
-			lcxUrl = "lcxUrl".asString
+			siteUrl = "lcxUrl".asString
 			webdriver = "webdriver".asString
 
 			siteModel = "siteModel".asFile
@@ -44,8 +44,8 @@ class BasicSettings implements SettingsProvider {
 		}
 	}
 
-	override getLcxUrl() {
-		lcxUrl
+	override getSiteUrl() {
+		siteUrl
 	}
 
 	override getWebdriver() {
@@ -68,6 +68,10 @@ class BasicSettings implements SettingsProvider {
 		useTestDataStore
 	}
 
+	private def getProperty(String reference) {
+		internalConfig.getString(reference)
+	}
+
 	private def asFile(String reference) {
 		reference.property.resourceAsFile
 	}
@@ -78,10 +82,6 @@ class BasicSettings implements SettingsProvider {
 
 	private def asBoolean(String reference) {
 		Boolean.valueOf(reference.property)
-	}
-
-	private def getProperty(String reference) {
-		internalConfig.getString(reference)
 	}
 
 }

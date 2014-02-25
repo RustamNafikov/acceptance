@@ -7,9 +7,9 @@ import java.io.File
  */
 interface SettingsProvider {
 	/**
-	* @return the LCX Url
+	* @return the Site Under Test's Url
 	*/
-	def String getLcxUrl()
+	def String getSiteUrl()
 
 	/**
 	* @return the Webdriver

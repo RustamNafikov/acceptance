@@ -11,14 +11,14 @@ describe FileHelper {
 	val oddPath = "/aperproject/odd/"
 	val resourceToFind = "TestFileHelper.txt"
 	val resourceUriToGet = "/com/inadco/aperproject/odd/TestFileHelper.txt"
-
+	val resourceToFindDNE = "DoesntExist.txt"
+	val resourceUriToGetDNE = "/com/inadco/aperproject/odd/TestFileHelper.txt"
 	fact "getResourceUri - provide resource file URI"{
 		val uri = resourceUriToGet.resourceUri
 		uri should be URI
 		uri.toString should contain resourceToFind
 	}
-	
-	
+
 	fact "getResourceAsFile - provide resource File"{
 		val file = (oddPath + resourceToFind).resourceAsFile
 		file should be File

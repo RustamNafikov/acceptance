@@ -103,7 +103,11 @@ class BackgroundImpl implements Background { //
 	//tries to find an element on the currently displayed page
 	// @return the found WebElement, if any
 	private def find(By by) {
-		new WebDriverWait(wd, 60).until[findElement(by) != null]
+
+		//		new WebDriverWait(wd, 60).until[ it |it.findElements(by).size > 0]
+		new WebDriverWait(wd, 60).until(
+			ExpectedConditions.presenceOfElementLocated(by))
+
 		wd.findElement(by)
 	}
 

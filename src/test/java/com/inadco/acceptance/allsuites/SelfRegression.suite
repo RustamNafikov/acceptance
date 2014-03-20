@@ -14,6 +14,7 @@ This is internal regression testing for the acceptance testing framework
 
 ## common/helpers
 -"FileHelper"
+-"LoggerHelper"
 
 ## common/settings
 -"SettingsProvider"

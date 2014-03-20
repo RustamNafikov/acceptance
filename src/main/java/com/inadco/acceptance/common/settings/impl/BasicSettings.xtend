@@ -33,7 +33,7 @@ class BasicSettings implements SettingsProvider {
 			internalConfig = rootConfig.getConfig("internal")
 			LOG.debug("internal part:\n{}", internalConfig)
 
-			siteUrl = "lcxUrl".asString
+			siteUrl = "siteUrl".asString
 			webdriver = "webdriver".asString
 
 			siteModel = "siteModel".asFile

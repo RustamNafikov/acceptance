@@ -1,4 +1,4 @@
-package com.inadco.lcx.features
+package undertest.lcx.features
 
 Feature: Create New User Account
 	In order to conduct my business with Inadco

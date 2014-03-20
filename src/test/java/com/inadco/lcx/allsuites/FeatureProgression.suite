@@ -1,6 +1,0 @@
-package com.inadco.lcx.allsuites
-
-import com.inadco.lcx.features.*
-
-#Feature Progression
--"Create New User Account"

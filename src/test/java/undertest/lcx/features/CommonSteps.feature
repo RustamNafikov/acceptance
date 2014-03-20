@@ -1,13 +1,15 @@
-package com.inadco.lcx.features
+package undertest.lcx.features
 
 import com.inadco.acceptance.extensions.Background
 import com.inadco.acceptance.extensions.impl.BackgroundImpl
 import com.inadco.lcx.features.*
 
+
 Feature: CommonSteps
 	Background:
 	val lastModified = "08/13/2013 18:13"
 	extension Background bg = new BackgroundImpl(this.class, lastModified)
+
 Scenario: ""
 	Given _
 		println()
@@ -27,8 +29,9 @@ Scenario: ""
 	And I click "FIRST"
 		args.first.clicking
 	And I fill out "FIRST"
-		args.first.clicking
-		
+		args.first.typing
+	And I type "FIRST" into "SECOND"
+		args.first.typing(args.second)
 
 	//development
 	And I wait for "FIRST" seconds

@@ -10,27 +10,30 @@ import com.inadco.acceptance.extensions.Background
 import org.openqa.selenium.support.ui.ExpectedConditions
 import com.inadco.acceptance.common.context.impl.StandardContext
 import com.inadco.acceptance.common.context.AcceptanceContext
+import org.openqa.selenium.WebDriver
+import com.inadco.acceptance.core.sitemodel.SiteModel
+import com.inadco.acceptance.core.testdata.generator.DataGenerator
+import com.inadco.acceptance.core.sitemodel.Page
 
 /**
  * a basic implementation of Background interface
  */
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
-	val context = new StandardContext as AcceptanceContext
 
 	//
-	val siteUrl = context.siteUrl
-	val wd = context.webdriver
-	val wdName = context.webdriverName
-	val sm = context.siteModel
-	val td = context.testDataGenerator
+	val String siteUrl
+	val WebDriver wd
+	val String wdName
+	val SiteModel sm
+	val DataGenerator td
 
 	//	val dp = TestDataProvider.testData
 	val String referringFeature
 	val String lastModified
 
-	val initialPage = sm.getPage("Login Page")
-	var currentPage = initialPage
+	val Page initialPage
+	var Page currentPage
 
 	/**
 	 * @TODO: Need to init settings, site model, datagenerator here
@@ -38,12 +41,26 @@ class BackgroundImpl implements Background { //
 	 * (with a fall-back of basic settings)
 	 */
 	new(Class<?> referringFeature, String lastModified) {
+		this(referringFeature, lastModified, new StandardContext)
+	}
+
+	new(Class<?> referringFeature, String lastModified,
+		AcceptanceContext context) {
 		LOG.info("new Background for: {}, lastMod: {}",
 			referringFeature.simpleName, lastModified)
-		this.referringFeature = referringFeature.simpleName
+		referringFeature = referringFeature.simpleName
+		siteUrl = context.siteUrl
+		wd = context.webdriver
+		wdName = context.webdriverName
+		sm = context.siteModel
+		td = context.testDataGenerator
 
 		this.lastModified = lastModified
+		initialPage = sm.getPage("Login Page")
+		currentPage = initialPage
+
 		wd.get(siteUrl + initialPage.url)
+
 	}
 
 	override at(String pageName) {

@@ -3,14 +3,13 @@ package com.inadco.acceptance.common.settings.impl
 import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
 import com.typesafe.config.Config
-import java.io.File
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.common.settings.SettingsProvider
 
 /**
 * @MONO_STATE
-* Provides application-environment specific settings as defined in application.conf
+* Provides application-environment specific settings as defined in reference.conf
 */
 class BasicSettings implements SettingsProvider {
 
@@ -21,10 +20,10 @@ class BasicSettings implements SettingsProvider {
 	static Config internalConfig
 	static String siteUrl
 	static String webdriver
-	static File siteModel
-	static File dataItems
+	static String siteModel
+	static String dataItems
 	static String testDataStore
-	static boolean useTestDataStore
+	static String useTestDataStore
 
 	public new() {
 		if(!isInitialized) {
@@ -33,13 +32,13 @@ class BasicSettings implements SettingsProvider {
 			internalConfig = rootConfig.getConfig("internal")
 			LOG.debug("internal part:\n{}", internalConfig)
 
-			siteUrl = "siteUrl".asString
-			webdriver = "webdriver".asString
+			siteUrl = "siteUrl".asProperty
+			webdriver = "webdriver".asProperty
 
-			siteModel = "siteModel".asFile
-			dataItems = "dataItems".asFile
-			testDataStore = "testDataStore".asString
-			useTestDataStore = "useTestDataStore".asBoolean
+			siteModel = "siteModel".asProperty
+			dataItems = "dataItems".asProperty
+			testDataStore = "testDataStore".asProperty
+			useTestDataStore = "useTestDataStore".asProperty
 			isInitialized = true
 		}
 	}
@@ -68,20 +67,8 @@ class BasicSettings implements SettingsProvider {
 		useTestDataStore
 	}
 
-	private def getProperty(String reference) {
+	private def asProperty(String reference) {
 		internalConfig.getString(reference)
-	}
-
-	private def asFile(String reference) {
-		reference.property.resourceAsFile
-	}
-
-	private def asString(String reference) {
-		reference.property
-	}
-
-	private def asBoolean(String reference) {
-		Boolean.valueOf(reference.property)
 	}
 
 }

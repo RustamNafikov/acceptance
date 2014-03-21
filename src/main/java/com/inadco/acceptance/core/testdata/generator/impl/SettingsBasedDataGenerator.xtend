@@ -4,10 +4,10 @@ import com.inadco.acceptance.core.testdata.generator.DataGenerator
 import org.slf4j.LoggerFactory
 import java.util.List
 import com.inadco.acceptance.core.testdata.DataItem
-import com.inadco.acceptance.common.settings.impl.BasicSettings
 import static extension org.apache.commons.lang3.RandomStringUtils.*
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.core.testdata.impl.GeneratedDataItem
+import com.inadco.acceptance.common.context.impl.StandardContext
 
 /**
  * @TODO Make it mono-state
@@ -18,7 +18,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 
 	static var isInitialized = false
 
-	val settings = new BasicSettings
+	val settings = new StandardContext
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
 	static var List<DataItem> dataItems
@@ -27,7 +27,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 		if(!isInitialized) {
 
 			//get a mapsList from the DataItems File
-			val ml = settings.dataItems.asMapsList
+			val ml = settings.dataItemsFile.asMapsList
 
 			//populate the list of dataItems using the mapsList
 			dataItems = ml.map[

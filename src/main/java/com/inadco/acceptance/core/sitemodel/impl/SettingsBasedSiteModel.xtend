@@ -8,15 +8,16 @@ import com.inadco.acceptance.core.sitemodel.Page
 import com.inadco.acceptance.core.sitemodel.Element
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
-import com.inadco.acceptance.common.settings.impl.BasicSettings
+import com.inadco.acceptance.common.context.impl.StandardContext
+
 /**
  * @MONO_STATE
  * Provides a site-model from the settings
  * @TODO: need to replace this with something more generic (no direct ref to Settings)
  */
 class SettingsBasedSiteModel implements SiteModel {
-	static val LOG = LoggerFactory.getLogger(SettingsBasedSiteModel)
-	val settings = new BasicSettings
+	val LOG = LoggerFactory.getLogger(this.class)
+	val settings = new StandardContext
 	static var isInitialized = false
 	static var List<Page> pages
 
@@ -24,7 +25,7 @@ class SettingsBasedSiteModel implements SiteModel {
 		if(!isInitialized) {
 
 			//get a mapsList from the SiteModel File
-			val ml = settings.siteModel.asMapsList
+			val ml = settings.siteModelFile.asMapsList
 
 			//create a general list of elements from the mapsList
 			val elements = ml.map[return new ElementImpl(this, it) as Element]
@@ -45,4 +46,5 @@ class SettingsBasedSiteModel implements SiteModel {
 	override getPage(String pageName) {
 		pages.filter[it.name.equals(pageName)].head
 	}
+
 }

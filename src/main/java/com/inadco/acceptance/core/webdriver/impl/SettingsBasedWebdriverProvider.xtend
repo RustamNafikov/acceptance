@@ -3,11 +3,11 @@ package com.inadco.acceptance.core.webdriver.impl
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.slf4j.LoggerFactory
-import com.inadco.acceptance.common.settings.impl.BasicSettings
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxProfile
-import static extension com.inadco.acceptance.common.helpers.FileHelper.*
+import com.inadco.acceptance.common.context.impl.StandardContext
 import com.inadco.acceptance.core.webdriver.WebdriverProvider
+import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 
 /**
  * @TODO: Make mono-state - not pure static methode
@@ -17,7 +17,7 @@ import com.inadco.acceptance.core.webdriver.WebdriverProvider
 class SettingsBasedWebdriverProvider implements WebdriverProvider{
 
 	static val LOG = LoggerFactory.getLogger(SettingsBasedWebdriverProvider)
-	static val settings = new BasicSettings
+	static val context = new StandardContext
 
 	/**
 	* 
@@ -45,6 +45,6 @@ class SettingsBasedWebdriverProvider implements WebdriverProvider{
 	* @return a selenium-backed WebDriver corresponding the webdriver property in application.conf
 	*/
 	override getWebdriver() {
-		webdriver(settings.webdriver)
+		webdriver(context.webdriverName)
 	}
 }

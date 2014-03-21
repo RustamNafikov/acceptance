@@ -2,7 +2,6 @@ package com.inadco.acceptance.common.helpers
 
 import org.slf4j.LoggerFactory
 import ch.qos.logback.classic.Logger
-import ch.qos.logback.classic.Level
 import static extension ch.qos.logback.classic.Level.*
 
 class LoggerHelper {

@@ -5,25 +5,25 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.slf4j.LoggerFactory
 
-import com.inadco.acceptance.common.settings.impl.BasicSettings
 import com.inadco.acceptance.extensions.Background
 
 import org.openqa.selenium.support.ui.ExpectedConditions
-import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
-import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
-import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
+import com.inadco.acceptance.common.context.impl.StandardContext
+import com.inadco.acceptance.common.context.AcceptanceContext
 
 /**
  * a basic implementation of Background interface
- * 
  */
 class BackgroundImpl implements Background { //
 	val LOG = LoggerFactory.getLogger(this.class)
+	val context = new StandardContext as AcceptanceContext
 
-	val settings = new BasicSettings
-	val sm = new SettingsBasedSiteModel
-	val td = new SettingsBasedDataGenerator
-	val wd = (new SettingsBasedWebdriverProvider).webdriver
+	//
+	val siteUrl = context.siteUrl
+	val wd = context.webdriver
+	val wdName = context.webdriverName
+	val sm = context.siteModel
+	val td = context.testDataGenerator
 
 	//	val dp = TestDataProvider.testData
 	val String referringFeature
@@ -43,7 +43,7 @@ class BackgroundImpl implements Background { //
 		this.referringFeature = referringFeature.simpleName
 
 		this.lastModified = lastModified
-		wd.get(settings.siteUrl + initialPage.url)
+		wd.get(siteUrl + initialPage.url)
 	}
 
 	override at(String pageName) {
@@ -114,7 +114,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct element locator for this Background's SiteModel / Webdriver combination
 	private def getElementLocator(String elementName) {
 		val e = currentPage.getElement(elementName)
-		switch settings.webdriver {
+		switch wdName {
 			case "FirefoxDriver": e.firefoxLocator
 			case "HtmlUnitDriver": e.htmlUnitLocator
 		}
@@ -123,7 +123,7 @@ class BackgroundImpl implements Background { //
 	//gets the correct page locator for this Background's SiteModel / Webdriver combination
 	private def getPageLocator(String pageName) {
 		val p = sm.getPage(pageName)
-		switch settings.webdriver {
+		switch wdName {
 			case "FirefoxDriver": p.firefoxLocator
 			case "HtmlUnitDriver": p.htmlUnitLocator
 		}

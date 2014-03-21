@@ -1,11 +1,10 @@
 package com.inadco.acceptance.common.settings
 
-import java.io.File
-
 /**
  * represents application-environment specific settings
  */
 interface SettingsProvider {
+
 	/**
 	* @return the Site Under Test's Url
 	*/
@@ -19,12 +18,12 @@ interface SettingsProvider {
 	/**
 	* @return the Site Model Definition File
 	*/
-	def File getSiteModel()
+	def String getSiteModel()
 
 	/**
 	 * @return the Data Items Definiton File
 	 */
-	def File getDataItems()
+	def String getDataItems()
 
 	/**
 	 * @return the Test Data Store File
@@ -35,5 +34,6 @@ interface SettingsProvider {
 	/**
 	 * @return if the Test Data Store should be used
 	 */
-	def boolean getUseTestDataStore()
+	def String getUseTestDataStore()
+
 }

@@ -32,6 +32,10 @@ class StandardContext implements AcceptanceContext {
 		this(new BasicSettings)
 	}
 
+	public new(Class<?> referringClass) {
+		this(new BasicSettings(referringClass))
+	}
+
 	public new(SettingsProvider settingsProvider) {
 		if(!isInitialized) {
 			siteUrl = settingsProvider.siteUrl
@@ -83,6 +87,5 @@ class StandardContext implements AcceptanceContext {
 	private def asFile(String reference) {
 		reference.resourceAsFile
 	}
-	
 
 }

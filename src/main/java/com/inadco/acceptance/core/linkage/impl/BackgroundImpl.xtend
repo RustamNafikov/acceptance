@@ -1,11 +1,11 @@
-package com.inadco.acceptance.extensions.impl
+package com.inadco.acceptance.core.linkage.impl
 
 import org.openqa.selenium.By
 
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.slf4j.LoggerFactory
 
-import com.inadco.acceptance.extensions.Background
+import com.inadco.acceptance.core.linkage.Background
 
 import org.openqa.selenium.support.ui.ExpectedConditions
 import com.inadco.acceptance.common.context.impl.StandardContext
@@ -49,22 +49,22 @@ class BackgroundImpl implements Background { //
 		LOG.info("new Background for: {}, lastMod: {}",
 			referringFeature.simpleName, lastModified)
 		referringFeature = referringFeature.simpleName
-		siteUrl = context.siteUrl
-		wd = context.webdriver
-		wdName = context.webdriverName
-		sm = context.siteModel
-		td = context.testDataGenerator
+		siteUrl = context.getSiteUrl
+		wd = context.getWebdriver
+		wdName = context.getWebdriverName
+		sm = context.getSiteModel
+		td = context.getTestDataGenerator
 
 		this.lastModified = lastModified
 		initialPage = sm.getPage("Login Page")
 		currentPage = initialPage
 
-		wd.get(siteUrl + initialPage.url)
+		wd.get(siteUrl + initialPage.getUrl)
 
 	}
 
 	override at(String pageName) {
-		var isDisplayed = pageName.pageLocator.find.displayed
+		var isDisplayed = pageName.getPageLocator.find.displayed
 		if(isDisplayed) {
 			currentPage = sm.getPage(pageName)
 		}
@@ -73,28 +73,28 @@ class BackgroundImpl implements Background { //
 	}
 
 	override see(String elementName) {
-		elementName.elementLocator.find.displayed
+		elementName.getElementLocator.find.displayed
 
 	}
 
 	override clicking(String elementName) {
-		elementName.elementLocator.find.click
+		elementName.getElementLocator.find.click
 
 	}
 
 	override typing(String elementName, String text) {
-		elementName.elementLocator.find.sendKeys(text)
+		elementName.getElementLocator.find.sendKeys(text)
 	}
 
 	override typing(String elementName) {
-		elementName.elementLocator.find.sendKeys(
+		elementName.getElementLocator.find.sendKeys(
 			getTypingValue(elementName)
 		)
 	}
 
 	override submit() {
-		val typable = currentPage.elements.filter[!it.typing.empty]
-		typable.forEach[(it.name).typing]
+		val typable = currentPage.getElements.filter[!it.getTyping.empty]
+		typable.forEach[(it.getName).typing]
 		"Submit".clicking
 
 	}
@@ -132,8 +132,8 @@ class BackgroundImpl implements Background { //
 	private def getElementLocator(String elementName) {
 		val e = currentPage.getElement(elementName)
 		switch wdName {
-			case "FirefoxDriver": e.firefoxLocator
-			case "HtmlUnitDriver": e.htmlUnitLocator
+			case "FirefoxDriver": e.getFirefoxLocator
+			case "HtmlUnitDriver": e.getHtmlUnitLocator
 		}
 	}
 
@@ -141,15 +141,15 @@ class BackgroundImpl implements Background { //
 	private def getPageLocator(String pageName) {
 		val p = sm.getPage(pageName)
 		switch wdName {
-			case "FirefoxDriver": p.firefoxLocator
-			case "HtmlUnitDriver": p.htmlUnitLocator
+			case "FirefoxDriver": p.getFirefoxLocator
+			case "HtmlUnitDriver": p.getHtmlUnitLocator
 		}
 	}
 
 	//gets the type of value to fetch from the testDataProvider
 	private def getTypingValue(String elementName) {
 		var currentElement = currentPage.getElement(elementName)
-		td.getValue(currentElement.typing)
+		td.getValue(currentElement.getTyping)
 	}
 
 }

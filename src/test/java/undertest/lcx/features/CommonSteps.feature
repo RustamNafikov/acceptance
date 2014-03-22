@@ -1,7 +1,7 @@
 package undertest.lcx.features
 
-import com.inadco.acceptance.extensions.Background
-import com.inadco.acceptance.extensions.impl.BackgroundImpl
+import com.inadco.acceptance.core.linkage.Background
+import com.inadco.acceptance.core.linkage.impl.BackgroundImpl
 import com.inadco.lcx.features.*
 
 

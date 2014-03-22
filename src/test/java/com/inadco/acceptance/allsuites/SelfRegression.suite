@@ -1,12 +1,12 @@
 package com.inadco.acceptance.allsuites
 
 import com.inadco.acceptance.common.helpers.*
-import com.inadco.acceptance.core.testdata.*
 import com.inadco.acceptance.common.settings.*
+import com.inadco.acceptance.core.linkage.*
 import com.inadco.acceptance.core.sitemodel.*
+import com.inadco.acceptance.core.testdata.*
 import com.inadco.acceptance.core.testdata.generator.*
 import com.inadco.acceptance.core.webdriver.*
-import com.inadco.acceptance.extensions.*
 
 # Self Regression Specs
 
@@ -18,6 +18,9 @@ This is internal regression testing for the acceptance testing framework
 
 ## common/settings
 -"SettingsProvider"
+
+## core/linkage
+-"Background"
 
 ## core/sitemodel
 -"Element"
@@ -31,5 +34,3 @@ This is internal regression testing for the acceptance testing framework
 ## core/webdriver
 -"WebdriverProvider"
 
-## extensions
--"Background"

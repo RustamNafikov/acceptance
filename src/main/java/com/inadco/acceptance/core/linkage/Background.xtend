@@ -1,4 +1,4 @@
-package com.inadco.acceptance.extensions
+package com.inadco.acceptance.core.linkage
 
 import org.junit.After
 

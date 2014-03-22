@@ -1,6 +1,6 @@
 package com.inadco.aper.extensions
 
-import com.inadco.acceptance.extensions.Background
+import com.inadco.acceptance.core.linkage.Background
 
 @Data
 class AperBackground implements Background {

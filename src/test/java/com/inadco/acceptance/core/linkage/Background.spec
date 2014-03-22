@@ -1,6 +1,6 @@
-package com.inadco.acceptance.extensions
+package com.inadco.acceptance.core.linkage
 
-import com.inadco.acceptance.extensions.Background
+import com.inadco.acceptance.core.linkage.Background
 import com.inadco.aper.extensions.AperBackground
 
 describe Background {

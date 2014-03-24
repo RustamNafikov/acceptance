@@ -9,7 +9,7 @@ import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
 import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
 import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
 import com.inadco.acceptance.common.settings.UndertestSettings
-import com.inadco.acceptance.common.settings.impl.BasicSettings
+import com.inadco.acceptance.common.settings.impl.UndertestSettingsImpl
 
 /**
 * @MONO_STATE
@@ -29,11 +29,11 @@ class StandardContext implements AcceptanceContext {
 	static boolean useTestDataStore
 
 	public new() {
-		this(new BasicSettings)
+		this(new UndertestSettingsImpl)
 	}
 
 	public new(Class<?> referringClass) {
-		this(new BasicSettings(referringClass))
+		this(new UndertestSettingsImpl(referringClass))
 	}
 
 	public new(UndertestSettings settingsProvider) {

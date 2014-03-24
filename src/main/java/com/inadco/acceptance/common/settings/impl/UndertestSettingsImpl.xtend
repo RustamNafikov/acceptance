@@ -10,7 +10,7 @@ import com.typesafe.config.ConfigException
 * @MONO_STATE
 * Provides application-environment specific settings as defined in reference.conf
 */
-class BasicSettings implements UndertestSettings {
+class UndertestSettingsImpl implements UndertestSettings {
 
 	val LOG = LoggerFactory.getLogger(this.class)
 

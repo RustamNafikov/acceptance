@@ -3,10 +3,10 @@ package com.inadco.acceptance.common.settings.impl
 import com.inadco.acceptance.common.settings.UndertestSettings
 import undertest.lcx.features.CommonStepsFeature
 
-describe BasicSettings {
+describe UndertestSettingsImpl {
 	
 	
-	extension UndertestSettings bs = new BasicSettings
+	extension UndertestSettings bs = new UndertestSettingsImpl
 	def verifyValues{
 		| actual           | expected                          |
 		| siteUrl          | "https://lcx.qa.inadco.com"       |
@@ -21,8 +21,8 @@ describe BasicSettings {
 	}
 	
 	fact "Based on the executing class' context should work"{
-		(bs as BasicSettings).isInitialized = false
-		bs = new BasicSettings(CommonStepsFeature)
+		(bs as UndertestSettingsImpl).isInitialized = false
+		bs = new UndertestSettingsImpl(CommonStepsFeature)
 		verifyValues.forEach[actual should be expected]
 	}
 

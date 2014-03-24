@@ -17,7 +17,7 @@ This is internal regression testing for the acceptance testing framework
 -"LoggerHelper"
 
 ## common/settings
--"SettingsProvider"
+-"UndertestSettings"
 
 ## core/linkage
 -"Background"

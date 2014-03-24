@@ -8,7 +8,7 @@ import com.inadco.acceptance.common.context.AcceptanceContext
 import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
 import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
 import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
-import com.inadco.acceptance.common.settings.SettingsProvider
+import com.inadco.acceptance.common.settings.UndertestSettings
 import com.inadco.acceptance.common.settings.impl.BasicSettings
 
 /**
@@ -36,7 +36,7 @@ class StandardContext implements AcceptanceContext {
 		this(new BasicSettings(referringClass))
 	}
 
-	public new(SettingsProvider settingsProvider) {
+	public new(UndertestSettings settingsProvider) {
 		if(!isInitialized) {
 			siteUrl = settingsProvider.siteUrl
 			webdriver = settingsProvider.webdriver

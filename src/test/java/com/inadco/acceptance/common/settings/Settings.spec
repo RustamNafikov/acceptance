@@ -1,6 +1,6 @@
 package com.inadco.acceptance.common.settings
 
-describe SettingsProvider {
+describe UndertestSettings {
 	//not yet implemented
 	//	TODO: fact assert this should be "implemented"
 }

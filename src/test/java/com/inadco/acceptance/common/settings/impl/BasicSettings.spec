@@ -1,12 +1,12 @@
 package com.inadco.acceptance.common.settings.impl
 
-import com.inadco.acceptance.common.settings.SettingsProvider
+import com.inadco.acceptance.common.settings.UndertestSettings
 import undertest.lcx.features.CommonStepsFeature
 
 describe BasicSettings {
 	
 	
-	extension SettingsProvider bs = new BasicSettings
+	extension UndertestSettings bs = new BasicSettings
 	def verifyValues{
 		| actual           | expected                          |
 		| siteUrl          | "https://lcx.qa.inadco.com"       |

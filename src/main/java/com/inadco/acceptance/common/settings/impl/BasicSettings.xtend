@@ -3,14 +3,14 @@ package com.inadco.acceptance.common.settings.impl
 import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
 
-import com.inadco.acceptance.common.settings.SettingsProvider
+import com.inadco.acceptance.common.settings.UndertestSettings
 import com.typesafe.config.ConfigException
 
 /**
 * @MONO_STATE
 * Provides application-environment specific settings as defined in reference.conf
 */
-class BasicSettings implements SettingsProvider {
+class BasicSettings implements UndertestSettings {
 
 	val LOG = LoggerFactory.getLogger(this.class)
 
@@ -24,7 +24,7 @@ class BasicSettings implements SettingsProvider {
 	static String useTestDataStore
 
 	public new() {
-		this(SettingsProvider)
+		this(UndertestSettings)
 	}
 
 	public new(Class<?> referringClass) throws ConfigException {

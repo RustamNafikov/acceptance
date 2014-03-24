@@ -3,7 +3,7 @@ package com.inadco.acceptance.common.settings
 /**
  * represents application-environment specific settings
  */
-interface SettingsProvider {
+interface UndertestSettings {
 
 	/**
 	* @return the Site Under Test's Url

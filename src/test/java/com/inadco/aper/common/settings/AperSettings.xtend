@@ -1,9 +1,9 @@
 package com.inadco.aper.common.settings
 
-import com.inadco.acceptance.common.settings.SettingsProvider
+import com.inadco.acceptance.common.settings.UndertestSettings
 
 @Data
-class AperSettings implements SettingsProvider {
+class AperSettings implements UndertestSettings {
 	val siteUrl = "http://www.sitedoesnotexist.com"
 	val webdriver = "FirefoxDriver"
 	val siteModel = "SiteModel.csv"

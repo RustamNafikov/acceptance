@@ -18,7 +18,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 
 	static var isInitialized = false
 
-	val settings = new StandardContext
+	val context = new StandardContext
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
 	static var List<DataItem> dataItems
@@ -27,7 +27,8 @@ class SettingsBasedDataGenerator implements DataGenerator {
 		if(!isInitialized) {
 
 			//get a mapsList from the DataItems File
-			val ml = settings.dataItemsFile.asMapsList
+			val ml = context.dataItemsFile.asMapsList
+			LOG.trace("found dataItems: \n{}", ml.toString)
 
 			//populate the list of dataItems using the mapsList
 			dataItems = ml.map[

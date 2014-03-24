@@ -36,14 +36,16 @@ class StandardContext implements AcceptanceContext {
 		this(new UndertestSettingsImpl(referringClass))
 	}
 
-	public new(UndertestSettings settingsProvider) {
+	public new(UndertestSettings undertestSettings) {
 		if(!isInitialized) {
-			siteUrl = settingsProvider.siteUrl
-			webdriver = settingsProvider.webdriver
-			siteModelFile = settingsProvider.siteModel.asFile
-			dataItemsFile = settingsProvider.dataItems.asFile
-			testDataStore = settingsProvider.testDataStore
-			useTestDataStore = settingsProvider.useTestDataStore.asBoolean
+			LOG.trace("new context using undertest:/n{}",
+				undertestSettings.toString)
+			siteUrl = undertestSettings.siteUrl
+			webdriver = undertestSettings.webdriver
+			siteModelFile = undertestSettings.siteModel.asFile
+			dataItemsFile = undertestSettings.dataItems.asFile
+			testDataStore = undertestSettings.testDataStore
+			useTestDataStore = undertestSettings.useTestDataStore.asBoolean
 			isInitialized = true
 		}
 	}

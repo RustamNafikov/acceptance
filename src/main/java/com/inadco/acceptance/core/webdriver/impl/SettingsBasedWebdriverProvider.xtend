@@ -5,19 +5,20 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.slf4j.LoggerFactory
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxProfile
-import com.inadco.acceptance.common.context.impl.StandardContext
 import com.inadco.acceptance.core.webdriver.WebdriverProvider
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
+import com.inadco.acceptance.common.context.impl.UndertestContextImpl
+import com.inadco.acceptance.common.context.UndertestContext
 
 /**
- * @TODO: Make mono-state - not pure static methode
+ * @TODO: Make mono-state - not pure static method
  * @TODO: Remove settings dependence
  * Merely provides a WebDriver
  */
-class SettingsBasedWebdriverProvider implements WebdriverProvider{
+class SettingsBasedWebdriverProvider implements WebdriverProvider {
 
 	static val LOG = LoggerFactory.getLogger(SettingsBasedWebdriverProvider)
-	static val context = new StandardContext
+	static val context = new UndertestContextImpl as UndertestContext
 
 	/**
 	* 
@@ -47,4 +48,5 @@ class SettingsBasedWebdriverProvider implements WebdriverProvider{
 	override getWebdriver() {
 		webdriver(context.webdriverName)
 	}
+
 }

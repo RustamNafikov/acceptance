@@ -8,7 +8,7 @@ import com.inadco.acceptance.core.testdata.generator.DataGenerator
 /**
  * represents application-environment specific settings
  */
-interface AcceptanceContext {
+interface UndertestContext {
 
 	/**
 	* @return the Site Under Test's Url

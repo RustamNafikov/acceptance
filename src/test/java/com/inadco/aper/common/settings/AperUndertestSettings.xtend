@@ -3,7 +3,7 @@ package com.inadco.aper.common.settings
 import com.inadco.acceptance.common.settings.UndertestSettings
 
 @Data
-class AperSettings implements UndertestSettings {
+class AperUndertestSettings implements UndertestSettings {
 	val siteUrl = "http://www.sitedoesnotexist.com"
 	val webdriver = "FirefoxDriver"
 	val siteModel = "SiteModel.csv"

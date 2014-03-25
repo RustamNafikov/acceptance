@@ -8,7 +8,8 @@ import com.inadco.acceptance.core.sitemodel.Page
 import com.inadco.acceptance.core.sitemodel.Element
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
-import com.inadco.acceptance.common.context.impl.StandardContext
+import com.inadco.acceptance.common.context.impl.UndertestContextImpl
+import com.inadco.acceptance.common.context.UndertestContext
 
 /**
  * @MONO_STATE
@@ -17,7 +18,7 @@ import com.inadco.acceptance.common.context.impl.StandardContext
  */
 class SettingsBasedSiteModel implements SiteModel {
 	val LOG = LoggerFactory.getLogger(this.class)
-	val settings = new StandardContext
+	val uContext = new UndertestContextImpl as UndertestContext
 	static var isInitialized = false
 	static var List<Page> pages
 
@@ -25,7 +26,7 @@ class SettingsBasedSiteModel implements SiteModel {
 		if(!isInitialized) {
 
 			//get a mapsList from the SiteModel File
-			val ml = settings.siteModelFile.asMapsList
+			val ml = uContext.siteModelFile.asMapsList
 
 			//create a general list of elements from the mapsList
 			val elements = ml.map[return new ElementImpl(this, it) as Element]

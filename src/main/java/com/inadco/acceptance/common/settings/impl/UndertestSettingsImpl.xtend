@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigException
 
 /**
 * @MONO_STATE
-* Provides application-environment specific settings as defined in reference.conf
+* Provides site under test specific settings as defined in x.conf
 */
 class UndertestSettingsImpl implements UndertestSettings {
 
@@ -29,13 +29,12 @@ class UndertestSettingsImpl implements UndertestSettings {
 
 	public new(Class<?> referringClass) throws ConfigException {
 		referringClass ?: this.class
-		LOG.error('init with: {}, the conf will be: ', referringClass)
 
 		if(!isInitialized) {
-			LOG.error('was not init')
+			LOG.trace('initializing using: {}', referringClass.package.name)
 
 			extension val c = ConfigFactory.load(referringClass.configName).
-				getConfig("internal")
+				getConfig("use")
 			siteUrl = "siteUrl".string
 			webdriver = "webdriver".string
 			siteModel = "siteModel".string
@@ -45,7 +44,7 @@ class UndertestSettingsImpl implements UndertestSettings {
 			isInitialized = true
 
 		} else {
-			LOG.error('was already init')
+			LOG.trace('was already initialized')
 		}
 	}
 
@@ -75,7 +74,7 @@ class UndertestSettingsImpl implements UndertestSettings {
 
 	package def getConfigName(Class<?> referringClass) {
 
-		LOG.error("referring class is {}", referringClass)
+		LOG.trace("referring class is {}", referringClass)
 
 		//by convention the config name should be the same as the package in undertest
 		val splitPN = referringClass.package.name.split("\\.")

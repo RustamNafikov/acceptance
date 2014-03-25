@@ -8,12 +8,13 @@ import org.slf4j.LoggerFactory
 import com.inadco.acceptance.core.linkage.Background
 
 import org.openqa.selenium.support.ui.ExpectedConditions
-import com.inadco.acceptance.common.context.impl.StandardContext
-import com.inadco.acceptance.common.context.AcceptanceContext
+import com.inadco.acceptance.common.context.impl.UndertestContextImpl
+import com.inadco.acceptance.common.context.UndertestContext
 import org.openqa.selenium.WebDriver
 import com.inadco.acceptance.core.sitemodel.SiteModel
 import com.inadco.acceptance.core.testdata.generator.DataGenerator
 import com.inadco.acceptance.core.sitemodel.Page
+import com.inadco.acceptance.common.context.impl.FrameworkContextImpl
 
 /**
  * a basic implementation of Background interface
@@ -41,19 +42,21 @@ class BackgroundImpl implements Background { //
 	 * (with a fall-back of basic settings)
 	 */
 	new(Class<?> referringFeature, String lastModified) {
-		this(referringFeature, lastModified, new StandardContext)
+		this(referringFeature, lastModified,
+			new UndertestContextImpl(referringFeature) as UndertestContext)
 	}
 
 	new(Class<?> referringFeature, String lastModified,
-		AcceptanceContext context) {
+		UndertestContext uContext) {
+		new FrameworkContextImpl
 		LOG.info("new Background for: {}, lastMod: {}",
 			referringFeature.simpleName, lastModified)
 		referringFeature = referringFeature.simpleName
-		siteUrl = context.getSiteUrl
-		wd = context.getWebdriver
-		wdName = context.getWebdriverName
-		sm = context.getSiteModel
-		td = context.getTestDataGenerator
+		siteUrl = uContext.getSiteUrl
+		wd = uContext.getWebdriver
+		wdName = uContext.getWebdriverName
+		sm = uContext.getSiteModel
+		td = uContext.getTestDataGenerator
 
 		this.lastModified = lastModified
 		initialPage = sm.getPage("Login Page")

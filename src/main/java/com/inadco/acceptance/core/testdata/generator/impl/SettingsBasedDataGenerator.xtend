@@ -7,7 +7,8 @@ import com.inadco.acceptance.core.testdata.DataItem
 import static extension org.apache.commons.lang3.RandomStringUtils.*
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
 import com.inadco.acceptance.core.testdata.impl.GeneratedDataItem
-import com.inadco.acceptance.common.context.impl.StandardContext
+import com.inadco.acceptance.common.context.impl.UndertestContextImpl
+import com.inadco.acceptance.common.context.UndertestContext
 
 /**
  * @TODO Make it mono-state
@@ -18,7 +19,7 @@ class SettingsBasedDataGenerator implements DataGenerator {
 
 	static var isInitialized = false
 
-	val context = new StandardContext
+	val context = new UndertestContextImpl as UndertestContext
 	val unique = 6.randomAlphabetic.toLowerCase.toFirstUpper
 
 	static var List<DataItem> dataItems

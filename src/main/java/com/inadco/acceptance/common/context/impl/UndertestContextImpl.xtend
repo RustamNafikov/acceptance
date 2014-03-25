@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory
 import java.io.File
 
 import static extension com.inadco.acceptance.common.helpers.FileHelper.*
-import com.inadco.acceptance.common.context.AcceptanceContext
+import com.inadco.acceptance.common.context.UndertestContext
 import com.inadco.acceptance.core.webdriver.impl.SettingsBasedWebdriverProvider
 import com.inadco.acceptance.core.sitemodel.impl.SettingsBasedSiteModel
 import com.inadco.acceptance.core.testdata.generator.impl.SettingsBasedDataGenerator
@@ -15,7 +15,7 @@ import com.inadco.acceptance.common.settings.impl.UndertestSettingsImpl
 * @MONO_STATE
 * Provides application-environment specific settings as defined in application.conf
 */
-class StandardContext implements AcceptanceContext {
+class UndertestContextImpl implements UndertestContext {
 
 	val LOG = LoggerFactory.getLogger(this.class)
 

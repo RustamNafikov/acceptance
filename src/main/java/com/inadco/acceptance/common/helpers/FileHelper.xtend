@@ -30,6 +30,7 @@ class FileHelper {
 	* @Return the URI for the named resource
 	*/
 	static package def getResourceUri(String resourceName) {
+		LOG.trace("getting URI for: {}", resourceName)
 
 		//FileHelper class used as a guaranteed-to-exist reference point
 		FileHelper.getResource(resourceName).toURI
@@ -40,15 +41,20 @@ class FileHelper {
 	* @Return the File Located associated with that resource name
 	*/
 	static def getResourceAsFile(String resourceName) {
-		var uri = (File.separator +
-			RESOURCES.filter[it.endsWith(resourceName)].head).resourceUri
+
+		//ensure the file is coming from either com.inadco.acceptance or undertest 
+		LOG.trace("getting resource: {} as a file", resourceName)
+		var uri = (File.separator + RESOURCES.filter[
+			it.endsWith(resourceName)].head).resourceUri
 
 		if(uri == null) {
 			LOG.error("no file was found for resource: {}", resourceName)
 			throw new IllegalArgumentException
 		}
-		new File(uri)
+		val f = new File(uri)
+		LOG.trace("{} was found at: {}", resourceName, f.canonicalPath)
 
+		f
 	}
 
 	/**
@@ -65,7 +71,8 @@ class FileHelper {
 	* @return the file's contents as a mapped list of lines (header-row derived)
 	*/
 	static def List<Map<String, String>> asMapsList(File file) {
-		LOG.trace("creating maps list from file: {}", file.name)
+		LOG.trace("creating maps list from file: {} located at: {}", file.name,
+			file.canonicalPath)
 		val List<String> lines = file.asList
 		val headerRow = lines.head.replaceAll(" ", "").toLowerCase.split('\t').
 			toList

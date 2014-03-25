@@ -1,7 +1,7 @@
 package com.inadco.acceptance.common.settings
 
 /**
- * represents application-environment specific settings
+ * represents site under test specific settings
  */
 interface UndertestSettings {
 

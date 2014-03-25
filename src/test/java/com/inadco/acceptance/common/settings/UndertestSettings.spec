@@ -1,11 +1,11 @@
 package com.inadco.acceptance.common.settings
 
-import com.inadco.aper.common.settings.AperSettings
+import com.inadco.aper.common.settings.AperUndertestSettings
 
 describe UndertestSettings {
 	
 	
-	extension UndertestSettings = new AperSettings
+	extension UndertestSettings = new AperUndertestSettings
 	def verifyValues{
 		| actual           | expected                          |
 		| siteUrl          | "http://www.sitedoesnotexist.com" |

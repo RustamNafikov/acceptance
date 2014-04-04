@@ -15,6 +15,10 @@ class AperBackground implements Background {
 		see
 	}
 
+	override see(String elementName, String text) {
+		see
+	}
+
 	override clicking(String elementName) {
 	}
 

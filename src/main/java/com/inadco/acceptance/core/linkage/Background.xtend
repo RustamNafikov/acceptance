@@ -6,6 +6,7 @@ import org.junit.After
  * this is the single point of contact between features and the runner
  */
 interface Background {
+
 	/**
 	* Checks whether the webdriver is at a particular page 
 	* and ready to interact with elements on that page
@@ -20,6 +21,14 @@ interface Background {
 	* @return result of the check
 	*/
 	def boolean see(String elementName)
+
+	/**
+	* Checks whether the element exists (visibly) AND it CONTAINS a particular string of text on the page the webdriver is currently at
+	* @param the element name to check (as defined in the Site Model)
+	* @param the text to look for within the element
+	* @return result of the check
+	*/
+	def boolean see(String elementName, String text)
 
 	/**
 	* Attempts to click on an element that may exist on the page the webdriver is currently at

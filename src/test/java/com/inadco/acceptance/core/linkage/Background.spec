@@ -6,9 +6,10 @@ import com.inadco.aper.extensions.AperBackground
 describe Background {
 	extension Background = new AperBackground
 	def verifyValues{
-		| actual  | expected |
-		| "".at   | true     |
-		| "".see  | true     |
+		| actual     | expected |
+		| "".at      | true     |
+		| "".see     | true     |
+		| "".see("") | true     |
 	}
 	
 

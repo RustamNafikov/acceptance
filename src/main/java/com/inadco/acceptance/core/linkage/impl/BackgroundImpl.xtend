@@ -80,6 +80,10 @@ class BackgroundImpl implements Background { //
 
 	}
 
+	override see(String elementName, String text) {
+		elementName.getElementLocator.find.text.contains(text)
+	}
+
 	override clicking(String elementName) {
 		elementName.getElementLocator.find.click
 

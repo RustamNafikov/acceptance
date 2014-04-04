@@ -23,6 +23,12 @@ Scenario: ""
 	//page checking
 	And I should be at the "FIRST"
 		args.first.at should be true
+		
+	And I should see "FIRST"
+		args.first.see should be true
+		
+	And I should see "FIRST" in "SECOND"
+		args.second.see(args.first) should be true
 
 	And I Submit "FIRST"
 		submit
